@@ -85,7 +85,7 @@ function EmailSupport({ navigation }) {
                                             name="email"
                                             render={({ field: { onChange, onBlur, value } }) => (
                                                 <TextInput
-                                                    className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] items-center shadow-input mx-0.5 shadow-custom-elevation shadow-md ${Platform.OS == "android" ? "shadow-black" : "border border-gray-200"} `}
+                                                    className={`w-full my-2 p-4 flex-row justify-between bg-[#F3F5F7] items-center shadow-input mx-0.5 shadow-custom-elevation shadow-md ${Platform.OS == "android" ? "shadow-black" : "border border-gray-200"} `}
                                                     placeholder={t('pleaseenteremail')}
                                                     placeholderTextColor="grey"
                                                     style={styles.input}
@@ -108,7 +108,7 @@ function EmailSupport({ navigation }) {
                                         name="subject"
                                         render={({ field: { onChange, onBlur, value } }) => (
                                             <TextInput
-                                                className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] items-center shadow-input mx-0.5 shadow-custom-elevation shadow-md ${Platform.OS == "android" ? "shadow-black" : "border border-gray-200"} `}
+                                                className={`w-full my-2 p-4 flex-row justify-between bg-[#F3F5F7] items-center shadow-input mx-0.5 shadow-custom-elevation shadow-md ${Platform.OS == "android" ? "shadow-black" : "border border-gray-200"} `}
                                                 placeholder={t('pleaseentersubject')}
                                                 placeholderTextColor="grey"
                                                 style={styles.input}
@@ -130,7 +130,7 @@ function EmailSupport({ navigation }) {
                                         name="message"
                                         render={({ field: { onChange, onBlur, value } }) => (
                                             <TextInput
-                                                className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] items-center shadow-input mx-0.5 shadow-custom-elevation shadow-md ${Platform.OS == "android" ? "shadow-black" : "border border-gray-200"} `}
+                                                className={`w-full my-2 p-4 flex-row justify-between bg-[#F3F5F7] items-center shadow-input mx-0.5 shadow-custom-elevation shadow-md ${Platform.OS == "android" ? "shadow-black" : "border border-gray-200"} `}
                                                 placeholder={t('pleaseentermessage')}
                                                 placeholderTextColor="grey"
                                                 multiline
