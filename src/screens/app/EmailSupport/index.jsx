@@ -55,7 +55,7 @@ function EmailSupport({ navigation }) {
         >
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <ScrollView contentContainerStyle={styles.scrollViewContent}>
-                    <View className="flex-1 bg-white space-y-5 w-full p-3" edges={['top']}>
+                    <View className="flex-1 w-full bg-white space-y-5 p-3" edges={['top']}>
                         <View className="w-full flex-1 h-full bg-[#F7F7FA] rounded-[10px] overflow-hidden">
                             <View className="w-full h-36 bg-[#E9EDF7] flex flex-row ">
                                 <View className="basis-[35%] flex flex-row justify-center items-center">
@@ -75,7 +75,7 @@ function EmailSupport({ navigation }) {
                             </View>
                             <View className="w-full p-3">
                                 <View className="my-1">
-                                    <View className="w-full flex flex-row gap-[0.5px]">
+                                    <View className="flex flex-row gap-[0.5px] w-full">
                                         <Text className="font-extrabold ml-1 text-base tracking-wider text-neutral-700"> {t('email')}:</Text>
                                         <Text style={{ color: 'red', fontSize: 17, height: 13 }}>*</Text>
                                     </View>
