@@ -163,7 +163,7 @@ const Login = ({ navigation }) => {
                                 <Pressable onPress={onPressCurrentPassword}>
                                     <AnimatedFeatherIcon
                                         name={isCurrentPasswordHidden ? "eye" : "eye-off"}
-                                        size={25}
+                                        size={22}
                                         color="black"
                                     />
                                 </Pressable>
@@ -174,7 +174,7 @@ const Login = ({ navigation }) => {
 
                     <View className="flex flex-row justify-end my-2" style={styles.registerContainer}>
                         <Pressable onPress={() => navigation.navigate("ForgotPassword")}>
-                            <Text className="text-base text-blue-500 font-normal">Forgot Password</Text>
+                            <Text className="text-base text-blue-700 font-normal">Forgot Password</Text>
                         </Pressable>
                     </View>
 
@@ -192,14 +192,14 @@ const Login = ({ navigation }) => {
                     <View className="flex flex-row items-center justify-center mt-3" style={styles.registerContainer}>
                         <Text className="text-[16px] text-black">{t('donthaveaccount')}</Text>
                         <Pressable onPress={() => navigation.navigate("Register")}>
-                            <Text className="text-base text-black font-semibold ml-2">{t('register')}</Text>
+                            <Text className="text-base text-blue-700 font-semibold ml-2">{t('register')}</Text>
                         </Pressable>
                     </View>
 
                     <View className="flex flex-row items-center justify-center mt-3" style={styles.registerContainer}>
                         <Text className="text-[16px] text-black">Go to</Text>
                         <Pressable onPress={() => { progress.value = withTiming("1"); navigation.navigate("Home") }}>
-                            <Text className="text-base text-black font-semibold ml-2">Home Page</Text>
+                            <Text className="text-base text-blue-700 font-semibold ml-2">Home Page</Text>
                         </Pressable>
                     </View>
 

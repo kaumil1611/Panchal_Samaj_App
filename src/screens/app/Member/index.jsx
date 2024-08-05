@@ -5,6 +5,7 @@ import ImageViewing from 'react-native-image-viewing';
 import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 import NoDataFound from '../../../components/NoDataFound/NoDataFound';
 import ApiContext from '../../../context/ApiContext';
+import { GlobalContext } from '../../../context/globalState';
 
 const { width } = Dimensions.get('screen');
 
@@ -18,6 +19,7 @@ export default function Member() {
     const [isVisible, setIsVisible] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const { allcommitteeMembersListing } = useContext(ApiContext);
+    const { defaultLanguage } = useContext(GlobalContext);
     const { t } = useTranslation();
     const translateX = scrollY.interpolate({
         inputRange: [0, Math.max(height1 - height2, 1)],
@@ -125,12 +127,12 @@ export default function Member() {
                 }
                 <View className="flex flex-1 flex-row items-start mb-3 flex-wrap">
                     <Text className="text-base font-bold text-black mr-2">{t('fullName')}: </Text>
-                    <Text className="text-base text-black">{item.fullname}</Text>
+                    <Text className="text-base text-black">{defaultLanguage == "en" ? item.fullnameE : item.fullnameG}</Text>
                 </View>
 
                 <View className="flex flex-1 flex-row items-start mb-3 flex-wrap">
                     <Text className="text-base font-bold text-black mr-2">{t('position')}: </Text>
-                    <Text className="text-base text-black">{item.role}</Text>
+                    <Text className="text-base text-black">{defaultLanguage == "en" ? item.roleE : item.roleG}</Text>
                 </View>
 
                 <View className="flex flex-1 flex-row items-start mb-3 flex-wrap">
@@ -142,7 +144,7 @@ export default function Member() {
 
                 <View className="flex flex-1 flex-row items-start mb-3 flex-wrap">
                     <Text className="text-base font-bold text-black mr-2">{t('village')}: </Text>
-                    <Text className="text-base text-black">{item.village}</Text>
+                    <Text className="text-base text-black">{defaultLanguage == "en" ? item.villageE : item.villageG}</Text>
                 </View>
 
             </View>

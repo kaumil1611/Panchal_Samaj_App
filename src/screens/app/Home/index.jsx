@@ -44,6 +44,7 @@ const Home = ({ navigation }) => {
             : { id: "", name: "", redirectTo: "", image: "" },
         { id: "", name: "", redirectTo: "", image: "" },
         { id: "", name: "", redirectTo: "", image: "" },
+        { id: "", name: "", redirectTo: "", image: "" },
     ];
 
     const onPressIn = () => {
@@ -146,7 +147,7 @@ const Home = ({ navigation }) => {
                             data={cards}
                             renderItem={renderItem}
                             keyExtractor={(item) => item.id.toString()}
-                            numColumns={3}
+                            numColumns={4}
                             horizontal={false}
                             showsVerticalScrollIndicator={false}
                             showsHorizontalScrollIndicator={false}

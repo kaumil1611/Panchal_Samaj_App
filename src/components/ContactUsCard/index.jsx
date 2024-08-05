@@ -169,7 +169,7 @@ function ContactUsCard() {
                             size={25}
                             color="black"
                         />
-                        <Text className="text-xl tracking-wider text-neutral-700 font-extrabold">{t('mobile')}</Text>
+                        <Text className="text-xl tracking-wider text-neutral-700 font-extrabold capitalize">{t('mobile')}</Text>
                     </View>
                     <View className="mt-4">
                         <Text className="tracking-wider text-neutral-700 text-base">{t('contactusphoneheading')}</Text>
@@ -219,7 +219,7 @@ function ContactUsCard() {
                                 size={25}
                                 color="black"
                             />
-                            <Text className="text-xl tracking-wider text-neutral-700 font-extrabold">{t('email')}</Text>
+                            <Text className="text-xl tracking-wider text-neutral-700 font-extrabold capitalize">{t('email')}</Text>
                         </View>
                         <View className="mt-2">
                             <Text className="tracking-wider text-base text-neutral-700">{t('contactusemailheading')}</Text>
@@ -241,7 +241,7 @@ function ContactUsCard() {
                                 size={25}
                                 color="black"
                             />
-                            <Text className="text-xl tracking-wider text-neutral-700 font-extrabold">{t('socials')}</Text>
+                            <Text className="text-xl tracking-wider text-neutral-700 font-extrabold capitalize">{t('socials')}</Text>
                         </View>
                         <View className="mt-2">
                             <Text className="tracking-wider text-base text-neutral-700">{t('contactussocialheading')}</Text>

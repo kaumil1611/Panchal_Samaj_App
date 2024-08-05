@@ -12,6 +12,7 @@ import {
     StyleSheet,
     Text,
     TextInput,
+    TouchableOpacity,
     TouchableWithoutFeedback,
     View
 } from "react-native";
@@ -163,214 +164,196 @@ const ForgotPassword = ({ navigation }) => {
             <View className=" h-[90%] mt-24 rounded-t-[30px] bg-white">
                 <View className="w-full absolute top-[-60px] z-10 h-28 flex-row justify-center">
                     <View className="w-72 rounded-xl bg-[#4e63ac] h-full flex-row justify-center items-center">
-                        <Text className="text-white text-xl tracking-wider font-extrabold">{t('changePassword')}</Text>
+                        <Text className="text-white text-xl tracking-wider capitalize font-extrabold">Forgot Password</Text>
                     </View>
                 </View>
                 <KeyboardAvoidingView
                     behavior={Platform.OS === "ios" ? "padding" : "height"}
                     style={styles.container}
                 >
-                    <View className=" h-full  pt-10 ">
+                    <View className=" h-full pt-10">
                         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                            <View className="h-full justify-between flex ">
+                            <View className="h-full justify-between flex">
                                 <View className=" h-[90%]">
-                                    {!emailSent && (
-                                        <View className="my-9 relative flex-1 h-full px-8">
-                                            <View className="w-full flex flex-row gap-1">
-                                                <Text className="font-bold text-base text-neutral-700 ">
-                                                    {t("PleaseEnterEmail")}
-                                                </Text>
-                                                <Text
-                                                    style={{ color: "red", fontSize: 17, height: 13 }}
-                                                >
-                                                    *
-                                                </Text>
-                                            </View>
-                                            <View
-                                                className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] rounded-[15px] items-center shadow-input mx-0.5 ${Platform.OS == "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"}`}
-                                            >
-                                                <Controller
-                                                    control={emailControl}
-                                                    name="EnterEmail"
-                                                    render={({
-                                                        field: { onChange, onBlur, value },
-                                                    }) => (
-                                                        <TextInput
-                                                            placeholder={t("PleaseEnterEmail")}
-                                                            onBlur={onBlur}
-                                                            placeholderTextColor="grey"
-                                                            onChangeText={onChange}
-                                                            value={value}
-                                                            className={`basis-[85%] text-black ${Platform.OS == "ios" ? "p-3" : ""} pl-[10px] lowercase`}
-                                                        />
-                                                    )}
-                                                />
-                                            </View>
-                                            {emailErrors.EnterEmail && (
-                                                <Text className="text-red-500 mt-0">
-                                                    {emailErrors.EnterEmail.message}
-                                                </Text>
-                                            )}
-                                        </View>
-                                    )}
-
-                                    {emailSent && !otpVerified && (
-                                        <ScrollView
-                                            contentContainerStyle={{ flexGrow: 1 }}
-                                            showsVerticalScrollIndicator={false}
-                                        >
-                                            <View className="my-9 relative flex-1 px-8">
-                                                <View className="w-full flex flex-row gap-1">
+                                    <ScrollView>
+                                        {!emailSent && (
+                                            <View className="my-9 relative flex-1 h-full px-8">
+                                                <View className="mb-6">
+                                                    <Text className="text-black text-lg font-semibold mb-2">
+                                                        Steps for forgot password:
+                                                    </Text>
+                                                    <View>
+                                                        <Text className="text-gray-700 text-base">
+                                                            1. {t("stepEnterEmail")}
+                                                        </Text>
+                                                    </View>
+                                                </View>
+                                                <View className="w-full flex flex-row items-center mb-4">
                                                     <Text className="font-bold text-base text-neutral-700">
-                                                        OTP
+                                                        {t("PleaseEnterEmail")}
                                                     </Text>
-                                                    <Text
-                                                        style={{ color: "red", fontSize: 17, height: 13 }}
-                                                    >
-                                                        *
-                                                    </Text>
+                                                    <Text style={{ color: "red", fontSize: 17, height: 13 }}>*</Text>
                                                 </View>
                                                 <View
-                                                    className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] rounded-[15px] items-center shadow-input mx-0.5 ${Platform.OS == "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"}`}
+                                                    className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input mx-0.5 ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
+                                                        }`}
                                                 >
                                                     <Controller
-                                                        control={otpControl}
-                                                        name="otp"
-                                                        render={({
-                                                            field: { onChange, onBlur, value },
-                                                        }) => (
+                                                        control={emailControl}
+                                                        name="EnterEmail"
+                                                        render={({ field: { onChange, onBlur, value } }) => (
                                                             <TextInput
-                                                                placeholder={t("EnterOTP")}
+                                                                placeholder={t("PleaseEnterEmail")}
                                                                 onBlur={onBlur}
                                                                 placeholderTextColor="grey"
                                                                 onChangeText={onChange}
                                                                 value={value}
-                                                                className={`basis-[85%] text-black ${Platform.OS == "ios" ? "p-3" : ""} pl-[10px]`}
-                                                                keyboardType="numeric"
+                                                                className={`flex-1 text-black lowercase ${Platform.OS === "ios" ? "p-3" : ""
+                                                                    } pl-2`}
                                                             />
                                                         )}
                                                     />
                                                 </View>
-                                                {otpErrors.otp && (
-                                                    <Text className="text-red-500 mt-0">
-                                                        {otpErrors.otp.message}
-                                                    </Text>
+                                                {emailErrors.EnterEmail && (
+                                                    <Text className="text-red-500 mt-2">{emailErrors.EnterEmail.message}</Text>
                                                 )}
                                             </View>
-                                        </ScrollView>
-                                    )}
+                                        )}
 
-                                    {otpVerified && (
-                                        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                                            <ScrollView
-                                                contentContainerStyle={{ height: "100%" }}
-                                                onScroll={processScrollEvent}
-                                                showsHorizontalScrollIndicator={false}
-                                                showsVerticalScrollIndicator={false}
-
-                                            >
-                                                <View className="my-5 pb-[50%]  h-[90%]">
-                                                    <View className=" relative  px-8">
-                                                        <View className="w-full flex flex-row gap-1">
-                                                            <Text className="font-bold text-base text-neutral-700">
-                                                                New Password
-                                                            </Text>
-                                                            <Text
-                                                                style={{ color: "red", fontSize: 17, height: 13 }}
-                                                            >
-                                                                *
-                                                            </Text>
+                                        {emailSent && !otpVerified && (
+                                            <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
+                                                <View className="my-9 relative flex-1 px-8">
+                                                    <View className="mb-6">
+                                                        <Text className="text-black text-lg font-semibold mb-2">
+                                                            Steps for forgot password:
+                                                        </Text>
+                                                        <View>
+                                                            <Text className="text-gray-700 text-base">1. {t("stepEnterEmail")} <Text className="text-green-500"> ✔ </Text></Text>
+                                                            <Text className="text-gray-700 text-base">2. {t("stepEnterOTP")}</Text>
                                                         </View>
-                                                        <View
-                                                            className={`w-full my-1 px-4 h-12 flex-row justify-between bg-[#F3F5F7] rounded-[15px] items-center shadow-input mx-0.5 ${Platform.OS == "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow "}`}
-                                                        >
-                                                            <Controller
-                                                                control={passwordControl}
-                                                                name="newPassword"
-                                                                render={({
-                                                                    field: { onChange, onBlur, value },
-                                                                }) => (
-                                                                    <TextInput
-
-                                                                        placeholder={"New Password"}
-                                                                        onBlur={onBlur}
-                                                                        placeholderTextColor="grey"
-                                                                        onChangeText={onChange}
-                                                                        value={value}
-                                                                        secureTextEntry={isCurrentPasswordHidden}
-                                                                        className={`basis-[85%] text-black ${Platform.OS == "ios" ? "p-3" : ""} pl-[10px]`}
-                                                                    />
-                                                                )}
-                                                            />
-                                                            <Pressable
-                                                                onPress={onPressCurrentPassword}
-                                                                className="h-full justify-center"
-                                                            >
-                                                                <Feather
-                                                                    name={isCurrentPasswordHidden ? "eye-off" : "eye"}
-                                                                    size={20}
-                                                                    color="#B7B7B7"
-                                                                />
-                                                            </Pressable>
-                                                        </View>
-                                                        {passwordErrors.newPassword && (
-                                                            <Text className="text-red-500 mt-0">
-                                                                {passwordErrors.newPassword.message}
-                                                            </Text>
-                                                        )}
                                                     </View>
-                                                    <View className="relative flex px-8 mt-3">
-                                                        <View className="w-full flex flex-row gap-1">
-                                                            <Text className="font-bold text-base text-neutral-700">
-                                                                Confirm Password
-                                                            </Text>
-                                                            <Text
-                                                                style={{ color: "red", fontSize: 17, height: 13 }}
-                                                            >
-                                                                *
-                                                            </Text>
-                                                        </View>
-                                                        <View
-                                                            className={`w-full my-2 px-4 h-12 flex-row justify-between bg-[#F3F5F7] rounded-[15px] items-center shadow-input mx-0.5 ${Platform.OS == "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"}`}
-                                                        >
-                                                            <Controller
-                                                                control={passwordControl}
-                                                                name="confirmPassword"
-                                                                render={({
-                                                                    field: { onChange, onBlur, value },
-                                                                }) => (
-                                                                    <TextInput
-                                                                        placeholder={"Confirm Password"}
-                                                                        onBlur={onBlur}
-                                                                        placeholderTextColor="grey"
-                                                                        onChangeText={onChange}
-                                                                        value={value}
-                                                                        secureTextEntry={isConfirmPasswordHidden}
-                                                                        className={`basis-[85%] text-black ${Platform.OS == "ios" ? "p-3" : ""} pl-[10px]`}
-                                                                    />
-                                                                )}
-                                                            />
-                                                            <Pressable
-                                                                onPress={onPressConfirmPassword}
-                                                                className="h-full justify-center"
-                                                            >
-                                                                <Feather
-                                                                    name={isConfirmPasswordHidden ? "eye-off" : "eye"}
-                                                                    size={20}
-                                                                    color="#B7B7B7"
-                                                                />
-                                                            </Pressable>
-                                                        </View>
-                                                        {passwordErrors.confirmPassword && (
-                                                            <Text className="text-red-500 mt-0">
-                                                                {passwordErrors.confirmPassword.message}
-                                                            </Text>
-                                                        )}
+                                                    <View className="w-full flex flex-row items-center mb-4">
+                                                        <Text className="font-bold text-base text-neutral-700">OTP</Text>
+                                                        <Text style={{ color: "red", fontSize: 17, height: 13 }}>*</Text>
                                                     </View>
+                                                    <View
+                                                        className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input mx-0.5 ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
+                                                            }`}
+                                                    >
+                                                        <Controller
+                                                            control={otpControl}
+                                                            name="otp"
+                                                            render={({ field: { onChange, onBlur, value } }) => (
+                                                                <TextInput
+                                                                    placeholder="Enter OTP"
+                                                                    onBlur={onBlur}
+                                                                    placeholderTextColor="grey"
+                                                                    onChangeText={onChange}
+                                                                    value={value}
+                                                                    className={`flex-1 text-black ${Platform.OS === "ios" ? "p-3" : ""
+                                                                        } pl-2`}
+                                                                    keyboardType="numeric"
+                                                                />
+                                                            )}
+                                                        />
+                                                    </View>
+                                                    {otpErrors.otp && (
+                                                        <Text className="text-red-500 mt-2">{otpErrors.otp.message}</Text>
+                                                    )}
                                                 </View>
                                             </ScrollView>
-                                        </TouchableWithoutFeedback>
-                                    )}
+                                        )}
+                                        {otpVerified && (
+                                            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                                                <ScrollView
+                                                    contentContainerStyle={{ height: "100%" }}
+                                                    onScroll={processScrollEvent}
+                                                    showsHorizontalScrollIndicator={false}
+                                                    showsVerticalScrollIndicator={false}
+                                                >
+                                                    <View className="my-8 pb-[50%] h-[90%]">
+                                                        <View className="relative px-8">
+                                                            <View className="mb-6">
+                                                                <Text className="text-black text-lg font-semibold mb-2">
+                                                                    Steps for forgot password:
+                                                                </Text>
+                                                                <View>
+                                                                    <Text className="text-gray-700 text-base">1. First enter your email  <Text className="text-green-500"> ✔ </Text> </Text>
+                                                                    <Text className="text-gray-700 text-base">2. Enter the OTP sent to your email  <Text className="text-green-500"> ✔ </Text> </Text>
+                                                                    <Text className="text-gray-700 text-base">3. Enter your new password</Text>
+                                                                    <Text className="text-gray-700 text-base">4. Confirm your new password</Text>
+                                                                </View>
+                                                            </View>
+                                                            <View className="w-full flex flex-row items-center mb-4">
+                                                                <Text className="font-bold text-base text-neutral-700">New Password</Text>
+                                                                <Text style={{ color: "red", fontSize: 17, height: 13 }}>*</Text>
+                                                            </View>
+                                                            <View
+                                                                className={`w-full my-1 px-4 h-12 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input mx-0.5 ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
+                                                                    }`}
+                                                            >
+                                                                <Controller
+                                                                    control={passwordControl}
+                                                                    name="newPassword"
+                                                                    render={({ field: { onChange, onBlur, value } }) => (
+                                                                        <TextInput
+                                                                            placeholder="New Password"
+                                                                            onBlur={onBlur}
+                                                                            placeholderTextColor="grey"
+                                                                            onChangeText={onChange}
+                                                                            value={value}
+                                                                            secureTextEntry={isCurrentPasswordHidden}
+                                                                            className={`flex-1 text-black ${Platform.OS === "ios" ? "p-3" : ""
+                                                                                } pl-2`}
+                                                                        />
+                                                                    )}
+                                                                />
+                                                                <Pressable onPress={onPressCurrentPassword} className="h-full justify-center">
+                                                                    <Feather name={isCurrentPasswordHidden ? "eye-off" : "eye"} size={22} color="black" />
+                                                                </Pressable>
+                                                            </View>
+                                                            {passwordErrors.newPassword && (
+                                                                <Text className="text-red-500 mt-2">{passwordErrors.newPassword.message}</Text>
+                                                            )}
+                                                        </View>
+                                                        <View className="relative flex px-8 mt-3">
+                                                            <View className="w-full flex flex-row items-center mb-4">
+                                                                <Text className="font-bold text-base text-neutral-700">Confirm Password</Text>
+                                                                <Text style={{ color: "red", fontSize: 17, height: 13 }}>*</Text>
+                                                            </View>
+                                                            <View
+                                                                className={`w-full my-2 px-4 h-12 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input mx-0.5 ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
+                                                                    }`}
+                                                            >
+                                                                <Controller
+                                                                    control={passwordControl}
+                                                                    name="confirmPassword"
+                                                                    render={({ field: { onChange, onBlur, value } }) => (
+                                                                        <TextInput
+                                                                            placeholder="Confirm Password"
+                                                                            onBlur={onBlur}
+                                                                            placeholderTextColor="grey"
+                                                                            onChangeText={onChange}
+                                                                            value={value}
+                                                                            secureTextEntry={isConfirmPasswordHidden}
+                                                                            className={`flex-1 text-black ${Platform.OS === "ios" ? "p-3" : ""
+                                                                                } pl-2`}
+                                                                        />
+                                                                    )}
+                                                                />
+                                                                <Pressable onPress={onPressConfirmPassword} className="h-full justify-center">
+                                                                    <Feather name={isConfirmPasswordHidden ? "eye-off" : "eye"} size={22} color="black" />
+                                                                </Pressable>
+                                                            </View>
+                                                            {passwordErrors.confirmPassword && (
+                                                                <Text className="text-red-500 mt-2">{passwordErrors.confirmPassword.message}</Text>
+                                                            )}
+                                                        </View>
+                                                    </View>
+                                                </ScrollView>
+                                            </TouchableWithoutFeedback>
+                                        )}
+                                    </ScrollView>
 
                                     <View className="w-full px-8">
                                         {loading ? (

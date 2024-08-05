@@ -43,11 +43,8 @@ const HomePageCardContents = ({ content, image, redirectTo, functionality, navig
         <>
             {content && (
                 <View
-                    className={`rounded-[15px] bg-white shadow-input shadow-custom-elevation  ${Platform.OS == "ios" ? "shadow-sm" : "shadow-md shadow-black"}`}
-                    style={[
-                        styles.container,
-                        windowWidth < 376 && styles.smallContainer,
-                    ]}
+                    className={`rounded-[15px] bg-white shadow-input shadow-custom-elevation ${Platform.OS == "ios" ? "shadow-sm" : "shadow-md shadow-black"}`}
+                    style={styles.container}
                 >
                     <Animated.View style={[{ transform: [{ scale }] }]}>
                         <TouchableOpacity
@@ -55,23 +52,24 @@ const HomePageCardContents = ({ content, image, redirectTo, functionality, navig
                             activeOpacity={1}
                             onPressIn={onPressIn}
                             onPressOut={onPressOut}
-                            className="flex items-center gap-3 justify-center relative"
+                            className="flex items-center justify-center relative"
                         >
-
                             <Image
-                                className={`${windowWidth < 376 ? "w-14" : "w-24"}  ${windowWidth < 376 ? "h-14" : "h-24"}  font-semibold text-center`}
+                                className={`${windowWidth < 376 ? "w-10" : "w-10"}  ${windowWidth < 376 ? "h-10" : "h-10"}  font-semibold text-center`}
                                 source={image}
                             />
-
-                            <View className="" >
-                                <Text className={` ${windowWidth < 376 ? "text-base" : windowWidth < 376 ? "text-xl" : "text-lg"} text-black font-semibold text-center tracking-wider`}>
-                                    {content}
-                                </Text>
+                            <View>
+                                <View>
+                                    <Text className={` ${windowWidth < 376 ? "text-[14px]" : windowWidth < 376 ? "text-xl" : "text-[14px]"} text-black font-semibold text-center tracking-wider`}>
+                                        {content}
+                                    </Text>
+                                </View>
                             </View>
                         </TouchableOpacity>
                     </Animated.View>
                 </View>
             )}
+
         </>
     );
 };
@@ -82,8 +80,8 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     smallContainer: {
-        width: 110,
-        height: 120
+        width: 80,
+        height: 90
     },
 });
 

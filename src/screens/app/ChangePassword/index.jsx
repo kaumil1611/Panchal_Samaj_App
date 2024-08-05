@@ -125,7 +125,7 @@ const ChangePassword = ({ navigation }) => {
                                                 <Pressable onPress={onPressCurrentPassword}>
                                                     <AnimatedFeatherIcon
                                                         name={isCurrentPasswordHidden ? "eye" : "eye-off"}
-                                                        size={25}
+                                                        size={22}
                                                         color="black"
                                                     />
                                                 </Pressable>
@@ -158,7 +158,7 @@ const ChangePassword = ({ navigation }) => {
                                                 <Pressable onPress={onPressNewPassword}>
                                                     <AnimatedFeatherIcon
                                                         name={isNewPasswordHidden ? "eye" : "eye-off"}
-                                                        size={25}
+                                                        size={22}
                                                         color="black"
                                                     />
                                                 </Pressable>
@@ -191,7 +191,7 @@ const ChangePassword = ({ navigation }) => {
                                                 <Pressable onPress={onPressConfirmPassword}>
                                                     <AnimatedFeatherIcon
                                                         name={isConfirmPasswordHidden ? "eye" : "eye-off"}
-                                                        size={25}
+                                                        size={22}
                                                         color="black"
                                                     />
                                                 </Pressable>

@@ -63,9 +63,9 @@ const NewsHomePageContent = ({ navigation }) => {
 
     return (
         <>
-            <View className="p-3">
+            <View className="px-3">
                 <View>
-                    <Text className="text-xl font-bold text-rose-700 tracking-wider w-[40%]">
+                    <Text className="text-xl font-bold text-rose-700 tracking-wider capitalize w-[40%]">
                         {t("LatestNews")}
                     </Text>
                     <View className="border-b-2 border-red-700 w-[15%] my-2"></View>
@@ -112,7 +112,7 @@ const NewsHomePageContent = ({ navigation }) => {
                                         </View>
                                         <View className="flex-1">
                                             <Text className="text-[16px] font-bold text-black text-justify mx-3">{defaultLanguage && defaultLanguage == "en" ? parseAndRenderText(truncatedTitleE) : parseAndRenderText(truncatedTitleG)}</Text>
-                                            <Text className="capitalize text-[14px] font-semibold text-justify m-1 mx-3">{defaultLanguage && defaultLanguage == "en" ? parseAndRenderText(truncatedDescriptionE) : parseAndRenderText(truncatedDescriptionG)}</Text>
+                                            <Text className="capitalize text-[14px] text-black font-semibold text-justify m-1 mx-3">{defaultLanguage && defaultLanguage == "en" ? parseAndRenderText(truncatedDescriptionE) : parseAndRenderText(truncatedDescriptionG)}</Text>
                                         </View>
                                     </View>
                                 </TouchableOpacity>

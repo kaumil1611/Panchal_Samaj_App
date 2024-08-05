@@ -33,13 +33,13 @@ function Parallax({ sliderImages }) {
                     loop
                     snapEnabled={snapEnabled}
                     autoPlay={autoPlay}
-                    autoPlayInterval={1500}
+                    autoPlayInterval={2000}
                     modeConfig={{
                         parallaxScrollingScale: 0.9,
                         parallaxScrollingOffset: 50,
                     }}
                     data={modifiedImages}
-                    scrollAnimationDuration={1000}
+                    scrollAnimationDuration={2000}
                     renderItem={({ item }) => (
                         <View style={styles.slide}>
                             <LinearGradient colors={['rgba(0, 0.3, 0, 0.3)', 'rgba(0.2, 0.4, 0.4, 0.8)']} style={styles.gradient}>
@@ -50,7 +50,7 @@ function Parallax({ sliderImages }) {
                 />
             </View>
             <View className="px-3">
-                <Text className="text-xl font-bold text-rose-700 tracking-wider">Browse By</Text>
+                <Text className="text-xl font-bold text-rose-700 tracking-wider capitalize">Browse By</Text>
                 <View className="border-b-2 border-rose-700 w-[15%]"></View>
             </View>
         </>
