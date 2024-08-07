@@ -31,7 +31,7 @@ const Home = ({ navigation }) => {
     const scale = animation.interpolate({ inputRange, outputRange });
     const images = [(allUserInfo && allUserInfo.photo)
         ? { uri: `${process.env.IMAGE_URL}${allUserInfo.photo}` }
-        : require("../../../assets/profile_img.png")
+        : require("../../../assets/PanchalAPPLogo.jpg")
     ];
 
     const cards = [
@@ -135,7 +135,7 @@ const Home = ({ navigation }) => {
                                 {allUserInfo && allUserInfo.photo ? (
                                     <Image source={{ uri: `${process.env.IMAGE_URL}${allUserInfo.photo}` }} style={{ height: hp(10), width: hp(10), borderRadius: hp(5) }} />
                                 ) : (
-                                    <Image source={require("../../../assets/profile_img.png")} style={{ height: hp(10), width: hp(10), borderRadius: hp(5) }} />
+                                    <Image source={require("../../../assets/PanchalAPPLogo.jpg")} style={{ height: hp(10), width: hp(10), borderRadius: hp(5) }} />
                                 )}
                             </Pressable>
                         </Animated.View>

@@ -100,7 +100,6 @@ function NewsList({ navigation, news, loading }) {
                             </View>
                             <View className="p-2">
                                 <Text className="text-[15px] tracking-wider mb-5 text-neutral-700 text-justify font-semibold">
-
                                     {defaultLanguage == "en" ? truncateText(item?.descriptionE, 20) : truncateText(item?.descriptionG, 20)}
                                 </Text>
                             </View>

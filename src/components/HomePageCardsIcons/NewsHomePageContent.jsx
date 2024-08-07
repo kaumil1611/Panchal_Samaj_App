@@ -68,7 +68,7 @@ const NewsHomePageContent = ({ navigation }) => {
                     <Text className="text-xl font-bold text-rose-700 tracking-wider capitalize w-[40%]">
                         {t("LatestNews")}
                     </Text>
-                    <View className="border-b-2 border-red-700 w-[15%] my-2"></View>
+                    <View className="border-b-2 border-red-700 w-[15%]"></View>
                 </View>
                 {loading ? (
                     renderSkeleton()

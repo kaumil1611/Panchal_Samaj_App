@@ -92,7 +92,7 @@ const RootNavigator = () => {
                 <RootStack.Screen name="Faqs" component={Faqs} options={{ headerTitle: 'Faqs' }} />
                 <RootStack.Screen name="TermAndCondition" component={TermAndCondition} options={{ headerTitle: 'Term & Condition' }} />
                 <RootStack.Screen name="ChangePassword" component={ChangePassword} options={{ headerTitle: t("changePassword") }} />
-                <RootStack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerTitle: "Forgot password" }} />
+                <RootStack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerTitle: "Forgot Password" }} />
                 <RootStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
                 <RootStack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
                 <RootStack.Screen name="Register" component={Register} options={{ headerTitle: t("RegisterPage") }} />

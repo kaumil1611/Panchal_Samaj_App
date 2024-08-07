@@ -66,7 +66,7 @@ const ForgotPassword = ({ navigation }) => {
     const {
         control: emailControl,
         handleSubmit: handleEmailSubmit,
-        formState: { errors: emailErrors },
+        formState: { errors: emailErrors, },
         reset: resetEmailForm,
     } = useForm({
         resolver: yupResolver(emailSchema),
@@ -99,11 +99,16 @@ const ForgotPassword = ({ navigation }) => {
             const payload = { email: data.EnterEmail.toLowerCase() };
             setEmailForgotPassword(data.EnterEmail);
             setLoading(true);
-            await sendOTPForgotPassword(payload);
-            setEmailSent(true);
-            setLoading(false);
-            resetEmailForm();
+            const sendMail = await sendOTPForgotPassword(payload)
+            if (sendMail?.status) {
+                setEmailSent(true);
+                setLoading(false);
+                resetEmailForm();
+            } else {
+                throw new Error('Something went wrong')
+            }
         } catch (error) {
+            setEmailSent(false);
             setLoading(false);
             console.error("Error sending OTP", error);
         }
@@ -179,7 +184,7 @@ const ForgotPassword = ({ navigation }) => {
                                         {!emailSent && (
                                             <View className="my-9 relative flex-1 h-full px-8">
                                                 <View className="mb-6">
-                                                    <Text className="text-black text-lg font-semibold mb-2">
+                                                    <Text className="font-bold text-black text-base">
                                                         Steps for forgot password:
                                                     </Text>
                                                     <View>
@@ -188,14 +193,14 @@ const ForgotPassword = ({ navigation }) => {
                                                         </Text>
                                                     </View>
                                                 </View>
-                                                <View className="w-full flex flex-row items-center mb-4">
-                                                    <Text className="font-bold text-base text-neutral-700">
+                                                <View className="w-full flex flex-row items-center">
+                                                    <Text className="font-bold text-black text-base">
                                                         {t("PleaseEnterEmail")}
                                                     </Text>
-                                                    <Text style={{ color: "red", fontSize: 17, height: 13 }}>*</Text>
+                                                    <Text className="text-red-600 text-[17px] h-3 mb-4 ml-1">*</Text>
                                                 </View>
                                                 <View
-                                                    className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input mx-0.5 ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
+                                                    className={`w-full my-2 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
                                                         }`}
                                                 >
                                                     <Controller
@@ -208,14 +213,13 @@ const ForgotPassword = ({ navigation }) => {
                                                                 placeholderTextColor="grey"
                                                                 onChangeText={onChange}
                                                                 value={value}
-                                                                className={`flex-1 text-black lowercase ${Platform.OS === "ios" ? "p-3" : ""
-                                                                    } pl-2`}
+                                                                className={`flex-1 text-black lowercase ${Platform.OS === "ios" ? "p-3" : ""} pl-2`}
                                                             />
                                                         )}
                                                     />
                                                 </View>
                                                 {emailErrors.EnterEmail && (
-                                                    <Text className="text-red-500 mt-2">{emailErrors.EnterEmail.message}</Text>
+                                                    <Text className="text-red-500">{emailErrors.EnterEmail.message}</Text>
                                                 )}
                                             </View>
                                         )}
@@ -224,7 +228,7 @@ const ForgotPassword = ({ navigation }) => {
                                             <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
                                                 <View className="my-9 relative flex-1 px-8">
                                                     <View className="mb-6">
-                                                        <Text className="text-black text-lg font-semibold mb-2">
+                                                        <Text className="font-bold text-base text-neutral-700">
                                                             Steps for forgot password:
                                                         </Text>
                                                         <View>
@@ -232,12 +236,12 @@ const ForgotPassword = ({ navigation }) => {
                                                             <Text className="text-gray-700 text-base">2. {t("stepEnterOTP")}</Text>
                                                         </View>
                                                     </View>
-                                                    <View className="w-full flex flex-row items-center mb-4">
+                                                    <View className="w-full flex flex-row items-center">
                                                         <Text className="font-bold text-base text-neutral-700">OTP</Text>
-                                                        <Text style={{ color: "red", fontSize: 17, height: 13 }}>*</Text>
+                                                        <Text className="text-red-600 text-[17px] h-3 mb-4 ml-1">*</Text>
                                                     </View>
                                                     <View
-                                                        className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input mx-0.5 ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
+                                                        className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
                                                             }`}
                                                     >
                                                         <Controller
@@ -274,7 +278,7 @@ const ForgotPassword = ({ navigation }) => {
                                                     <View className="my-8 pb-[50%] h-[90%]">
                                                         <View className="relative px-8">
                                                             <View className="mb-6">
-                                                                <Text className="text-black text-lg font-semibold mb-2">
+                                                                <Text className="font-bold text-base text-neutral-700">
                                                                     Steps for forgot password:
                                                                 </Text>
                                                                 <View>
@@ -284,12 +288,12 @@ const ForgotPassword = ({ navigation }) => {
                                                                     <Text className="text-gray-700 text-base">4. Confirm your new password</Text>
                                                                 </View>
                                                             </View>
-                                                            <View className="w-full flex flex-row items-center mb-4">
+                                                            <View className="w-full flex flex-row items-center">
                                                                 <Text className="font-bold text-base text-neutral-700">New Password</Text>
-                                                                <Text style={{ color: "red", fontSize: 17, height: 13 }}>*</Text>
+                                                                <Text className="text-red-600 text-[17px] h-3 mb-4 ml-1">*</Text>
                                                             </View>
                                                             <View
-                                                                className={`w-full my-1 px-4 h-12 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input mx-0.5 ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
+                                                                className={`w-full my-1 px-4 h-12 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
                                                                     }`}
                                                             >
                                                                 <Controller
@@ -317,12 +321,12 @@ const ForgotPassword = ({ navigation }) => {
                                                             )}
                                                         </View>
                                                         <View className="relative flex px-8 mt-3">
-                                                            <View className="w-full flex flex-row items-center mb-4">
+                                                            <View className="w-full flex flex-row items-center">
                                                                 <Text className="font-bold text-base text-neutral-700">Confirm Password</Text>
-                                                                <Text style={{ color: "red", fontSize: 17, height: 13 }}>*</Text>
+                                                                <Text className="text-red-600 text-[17px] h-3 mb-4 ml-1">*</Text>
                                                             </View>
                                                             <View
-                                                                className={`w-full my-2 px-4 h-12 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input mx-0.5 ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
+                                                                className={`w-full my-2 px-4 h-12 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
                                                                     }`}
                                                             >
                                                                 <Controller

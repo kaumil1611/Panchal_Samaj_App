@@ -130,7 +130,7 @@ const Login = ({ navigation }) => {
                                     <TextInput
                                         className="rounded-lg p-3 text-black"
                                         onBlur={onBlur}
-                                        placeholder={t("emailOrMobileNumber")}
+                                        placeholder={t("emailOrMobileNumberPlaceHolder")}
                                         onChangeText={onChange}
                                         placeholderTextColor="grey"
                                         value={value}
@@ -141,7 +141,7 @@ const Login = ({ navigation }) => {
                         {errors.email_or_mobile && <Text className="absolute -bottom-4 text-red-500 px-3 ">{errors.email_or_mobile.message}</Text>}
                     </View>
 
-                    <View className={`relative ${errors.email_or_mobile ? 'mt-5' : 'mt-1'}`}>
+                    <View className={`relative w-full ${errors.email_or_mobile ? 'mt-5' : 'mt-1'}`}>
                         <Text className="mb-[1px] font-bold text-[16px] text-black mt-2">{t('password')}</Text>
                         <View className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] rounded-[15px] items-center shadow-input mx-0.5 shadow-custom-elevation shadow-md ${Platform.OS == "android" ? "shadow-black" : "border border-gray-200"} `}>
                             <Controller
@@ -149,9 +149,9 @@ const Login = ({ navigation }) => {
                                 name="password"
                                 render={({ field: { onChange, onBlur, value } }) => (
                                     <TextInput
-                                        className=" text-black p-3"
+                                        className="rounded-lg p-3 text-black"
                                         onBlur={onBlur}
-                                        placeholder={t("password")}
+                                        placeholder={t("passwordPlaceHolder")}
                                         placeholderTextColor="grey"
                                         onChangeText={onChange}
                                         value={value}
