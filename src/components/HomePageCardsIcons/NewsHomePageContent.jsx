@@ -106,7 +106,7 @@ const NewsHomePageContent = ({ navigation }) => {
                                     onPressOut={onPressOut}
                                     onPress={() => handleNewsOpen(item._id)}
                                 >
-                                    <View className={`flex flex-row items-center w-full p-2 bg-white shadow-input shadow-custom-elevation shadow-md rounded-lg mt-4 ${Platform.OS == "ios" ? "shadow-lg" : "shadow-black"}`}>
+                                    <View className={`flex flex-row items-center w-full p-2 bg-white shadow-input shadow-custom-elevation shadow-md rounded-lg mt-2 mb-2 ${Platform.OS == "ios" ? "shadow-lg" : "shadow-black"}`}>
                                         <View className="w-[30%]">
                                             <Image source={{ uri: process.env.IMAGE_URL + item.image }} resizeMode='cover' style={{ height: hp('12%'), width: '100%', borderRadius: 10 }} />
                                         </View>

@@ -121,7 +121,10 @@ const Login = ({ navigation }) => {
                 </View>
                 <View className="absolute bottom-0 bg-[#E9EDF7] h-[60%] p-4 rounded-tr-3xl rounded-tl-3xl shadow-md">
                     <View className="relative">
-                        <Text className="mb-[1px] font-bold text-[16px] text-black mt-2">{t('emailOrMobileNumber')}</Text>
+                        <View className="flex flex-row">
+                            <Text className="mb-[1px] font-bold text-[16px] text-black mt-2">{t('emailOrMobileNumber')}</Text>
+                            <Text className="text-red-600 text-[17px] mt-1 ml-1">*</Text>
+                        </View>
                         <View className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] rounded-[15px] items-center shadow-input mx-0.5 shadow-custom-elevation shadow-md ${Platform.OS == "android" ? "shadow-black" : "border border-gray-200"} `}>
                             <Controller
                                 control={control}
@@ -138,18 +141,21 @@ const Login = ({ navigation }) => {
                                 )}
                             />
                         </View>
-                        {errors.email_or_mobile && <Text className="absolute -bottom-4 text-red-500 px-3 ">{errors.email_or_mobile.message}</Text>}
+                        {errors.email_or_mobile && <Text className="absolute -bottom-4 text-red-500 px-3">{errors.email_or_mobile.message}</Text>}
                     </View>
 
                     <View className={`relative w-full ${errors.email_or_mobile ? 'mt-5' : 'mt-1'}`}>
-                        <Text className="mb-[1px] font-bold text-[16px] text-black mt-2">{t('password')}</Text>
+                        <View className="flex flex-row">
+                            <Text className="mb-[1px] font-bold text-[16px] text-black mt-2">{t('password')}</Text>
+                            <Text className="text-red-600 text-[17px] mt-1 ml-1">*</Text>
+                        </View>
                         <View className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] rounded-[15px] items-center shadow-input mx-0.5 shadow-custom-elevation shadow-md ${Platform.OS == "android" ? "shadow-black" : "border border-gray-200"} `}>
                             <Controller
                                 control={control}
                                 name="password"
                                 render={({ field: { onChange, onBlur, value } }) => (
                                     <TextInput
-                                        className="rounded-lg p-3 text-black"
+                                        className="rounded-lg p-3 text-black w-[80%]"
                                         onBlur={onBlur}
                                         placeholder={t("passwordPlaceHolder")}
                                         placeholderTextColor="grey"

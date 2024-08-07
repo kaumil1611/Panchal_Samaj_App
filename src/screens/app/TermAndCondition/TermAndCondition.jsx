@@ -58,7 +58,7 @@ const TermAndCondition = () => {
                                 <Text className="text-black text-xl font-bold mb-2">
                                     {defaultLanguage == "en" ? item.titleE : item.titleG}
                                 </Text>
-                                <Text className="text-md font-semibold text-justify">
+                                <Text className="text-md text-black text-justify">
                                     {defaultLanguage == "en" ? item.descriptionE : item.descriptionG}
                                 </Text>
                             </View>

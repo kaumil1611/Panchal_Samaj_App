@@ -85,7 +85,7 @@ const Home = ({ navigation }) => {
     }, [allUserInfo]);
 
     const renderItem = ({ item }) => (
-        <View className="flex-1 flex-row justify-around mt-3">
+        <View className="flex-1 flex-row justify-around mt-2">
             <HomePageCardContents
                 content={item.name}
                 redirectTo={item.redirectTo}
@@ -112,7 +112,7 @@ const Home = ({ navigation }) => {
 
     return (
         <>
-            <View className="flex-1 bg-[#E9EDF7] space-y-3 w-full pb-20" edges={['top']}>
+            <View className="flex-1 bg-[#E9EDF7] space-y-3 w-full pb-16" edges={['top']}>
                 <Pressable onPress={profileNavigate} className="bg-white h-fit flex items-center" style={{ alignSelf: 'stretch' }}>
                     <View className="flex-row justify-around my-3 w-full items-center ">
                         <View className="space-y-1 basis-2/3 justify-center px-5">

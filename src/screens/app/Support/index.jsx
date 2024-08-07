@@ -116,14 +116,15 @@ function Support({ navigation }) {
                                 <View className="bg-white p-3 mb-2 rounded-[20px] shadow-lg" style={styles.shadowOfCard}>
                                     <View className="flex flex-row justify-between items-center">
                                         <View className="w-[40px] h-[40px] overflow-hidden">
-                                            <Image
-                                                source={require("../../../assets/send_email.png")}
-                                                className="w-full h-full object-cover"
+                                            <AnimatedFeatherIcon
+                                                name="mail"
+                                                size={28}
+                                                className="text-blue-600"
                                             />
                                         </View>
                                         <View className="w-[200px]">
                                             <View>
-                                                <Text className={`tracking-wider font-extrabold capitalize ${windowHeight < 668 ? 'text-lg' : 'text-xl'} text-neutral-700 mb-2`}>{t('email')}</Text>
+                                                <Text className={`tracking-wider font-extrabold capitalize ${windowHeight < 668 ? 'text-lg' : 'text-xl'} text-neutral-700 mb-1`}>{t('email')}</Text>
                                                 <Text className="tracking-wider text-sm text-neutral-700">{t('getthesolutionsend')}</Text>
                                             </View>
                                         </View>
@@ -149,14 +150,15 @@ function Support({ navigation }) {
                                 <View className="bg-white p-3 mb-2 rounded-[20px] shadow-2xl" style={styles.shadowOfCard}>
                                     <View className="flex flex-row justify-between items-center">
                                         <View className="w-[40px] h-[40px] overflow-hidden">
-                                            <Image
-                                                source={require("../../../assets/faqs_icon.png")}
-                                                className="w-full h-full object-cover"
+                                            <AnimatedFeatherIcon
+                                                name="help-circle"
+                                                size={28}
+                                                className="text-blue-600"
                                             />
                                         </View>
                                         <View className="w-[200px]">
                                             <View>
-                                                <Text className={`tracking-wider capitalize font-extrabold ${windowHeight < 668 ? 'text-lg' : 'text-xl'} text-neutral-700 mb-2`}>FAQs</Text>
+                                                <Text className={`tracking-wider capitalize font-extrabold ${windowHeight < 668 ? 'text-lg' : 'text-xl'} text-neutral-700 mb-1`}>FAQs</Text>
                                                 <Text className="tracking-wider text-sm text-neutral-700">{t('findintelligentanswersInstantly')}</Text>
                                             </View>
                                         </View>
@@ -190,7 +192,7 @@ function Support({ navigation }) {
                                         </View>
                                         <View className="w-[200px]">
                                             <View>
-                                                <Text className={`tracking-wider font-extrabold capitalize ${windowHeight < 668 ? 'text-lg' : 'text-xl'} text-neutral-700 mb-2`}>{t("termsAndCondition")}</Text>
+                                                <Text className={`tracking-wider font-extrabold capitalize ${windowHeight < 668 ? 'text-lg' : 'text-xl'} text-neutral-700 mb-1`}>{t("termsAndCondition")}</Text>
                                                 <Text className="tracking-wider text-sm text-neutral-700">{t("termsAndConditionCardContent")}</Text>
                                             </View>
                                         </View>

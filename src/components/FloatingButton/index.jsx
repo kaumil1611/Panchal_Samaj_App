@@ -1,4 +1,3 @@
-// components/FloatingButton.js
 import React, { useContext } from 'react';
 import { Animated, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { GlobalContext } from '../../context/globalState';
@@ -62,4 +61,3 @@ const styles = StyleSheet.create({
 });
 
 export default ChangeLanguage;
-

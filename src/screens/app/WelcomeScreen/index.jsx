@@ -6,15 +6,17 @@ import Button from '../../../components/Button';
 import ApiContext from '../../../context/ApiContext';
 import { GlobalContext } from '../../../context/globalState';
 import { COLORS } from '../../../utils/colors';
-import { color } from 'native-base/lib/typescript/theme/styled-system';
+import { t } from 'i18next';
 
 const Welcome = ({ navigation }) => {
+
     const { joinPageContent } = useContext(ApiContext);
     const [imageOfJoinPage, setImageOfJoinPage] = useState("");
     const [contentTitle, setContentTitle] = useState("");
     const [description, setDescription] = useState("");
     const [loading, setLoading] = useState(true);
     const { progress } = useContext(GlobalContext);
+
     useEffect(() => {
         (async function () {
             const contentJoinPage = await joinPageContent();
@@ -39,7 +41,6 @@ const Welcome = ({ navigation }) => {
                 colors={[COLORS.secondary, COLORS.THIRD, COLORS.primary]}
                 className="h-full flex"
             >
-                {/* <View className="flex items-center w-full" style={{ height: SCREEN_HEIGHT / 2 }}> */}
                 <View className="flex-1 items-center w-full">
                     <Image
                         source={{ uri: `${process.env.IMAGE_URL}${imageOfJoinPage}` }}
@@ -66,7 +67,7 @@ const Welcome = ({ navigation }) => {
                             onPress={() => navigation.navigate("Register")}
                         />
                         <View className="flex flex-row justify-center items-center my-3">
-                            <Text className="text-base text-white">Already have an account?</Text>
+                            <Text className="text-base text-white">{t("doYouHaveAnAccount")}</Text>
                             <Pressable
                                 onPress={() => navigation.navigate("Login")}
                             >
@@ -86,12 +87,13 @@ const Welcome = ({ navigation }) => {
         </ScrollView>
     );
 };
+
 const styles = StyleSheet.create({
     TITLECOLOR: {
         color: COLORS.primary,
         fontSize: 20,
         fontWeight: '500',
-        // paddingHorizontal: 16,
     }
 });
+
 export default Welcome;

@@ -7,7 +7,7 @@ import {
     Dimensions,
     Image,
     ImageBackground,
-    Modal, Pressable,
+    Modal, Platform, Pressable,
     ScrollView,
     Share,
     Text,
@@ -37,7 +37,7 @@ const ProfilePage = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
     const [isBannerPopupVisible, setIsBannerPopupVisible] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
-    const appUrl = 'https://play.google.com/store/apps/details?id=com.panchal_application&pcampaignid=web_share';
+    const appUrl = Platform.OS == 'android' ? 'https://play.google.com/store/apps/details?id=com.panchal_application&pcampaignid=web_share' : "https://apps.apple.com/in/app/panchal-samaj-app/id6484595380";
     const cancelAnimation = new Animated.Value(0);
     const LogoutAnimation = new Animated.Value(0);
     const myBusinessAnimation = new Animated.Value(0);
