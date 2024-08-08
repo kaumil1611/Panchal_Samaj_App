@@ -241,6 +241,7 @@ const resources = {
       deleteBusinessCardContent2: "Once deleted, you will need to re-add your business card and make a new payment.",
       doYouHaveAnAccount: "Already have an account?",
       shareApplication: "Share Application",
+      SearchUser: "Search user",
     },
   },
   gu: {
@@ -288,7 +289,7 @@ const resources = {
       middlename: 'પિતાનું નામ',
       lastname: 'અટક',
       password: 'પાસવર્ડ',
-      passwordPlaceHolder: 'મહેરબાની કરીને તમારો પાસવર્ડ નાખો',
+      passwordPlaceHolder: 'કૃપા કરીને તમારો પાસવર્ડ નાખો',
       dateofbirth: 'જન્મ તારીખ',
       mobileno: 'મોબાઇલ',
       email: 'ઇમેઇલ',
@@ -479,6 +480,7 @@ const resources = {
       deleteBusinessCardContent2: "એકવાર કાઢી નાખ્યા પછી, તમને ફરીથી તમારી બિઝનેસ કાર્ડ ઉમેરવાની અને નવી ચુકવણી કરવાની જરૂર પડશે.",
       doYouHaveAnAccount: "શું તમારી પાસે પહેલેથી જ એકાઉન્ટ છે?",
       shareApplication: "એપ્લિકેશન શેર કરો",
+      SearchUser: "સભ્યો શોધો",
     },
   },
 };

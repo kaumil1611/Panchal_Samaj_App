@@ -223,6 +223,26 @@ function ContactUsCard() {
     return (
         <View className="mb-16">
             <View className="p-5">
+                {!isLoggedIn &&
+                    <View className="bg-white rounded-[15px] mb-4" style={styles.shadowOfCard}>
+                        <Animated.View
+                            style={[{ transform: [{ scale: shareAppScale }] }]}
+                        >
+                            <Pressable
+                                activeOpacity={1}
+                                onPressIn={onPressShareAppIn}
+                                onPressOut={onPressShareAppOut}
+                                onPress={handleShare}
+                                className="flex flex-row items-center justify-between bg-white rounded-[15px] shadow-input mx-0.5 shadow-custom-elevation shadow-md p-3"
+                            >
+                                <View className="flex flex-row items-center gap-3">
+                                    <AnimatedFontistoIcon name="share" size={18} color={"black"} />
+                                    <Text className="text-neutral-700 font-normal text-xl tracking-wider ml-2">{t("shareApplication")}</Text>
+                                </View>
+                            </Pressable>
+                        </Animated.View>
+                    </View>
+                }
                 <View className="bg-white rounded-[15px] p-5" style={styles.shadowOfCard}>
 
                     <View className="flex flex-row items-center gap-3">
@@ -365,26 +385,6 @@ function ContactUsCard() {
                     </View>
                 </View>
             )}
-            {!isLoggedIn &&
-                <View className="bg-white rounded-[20px] mx-4 mb-4" style={styles.shadowOfCard}>
-                    <Animated.View
-                        style={[{ transform: [{ scale: shareAppScale }] }]}
-                    >
-                        <Pressable
-                            activeOpacity={1}
-                            onPressIn={onPressShareAppIn}
-                            onPressOut={onPressShareAppOut}
-                            onPress={handleShare}
-                            className="flex flex-row items-center justify-between bg-white rounded-[15px] shadow-input mx-0.5 shadow-custom-elevation shadow-md p-3"
-                        >
-                            <View className="flex flex-row items-center gap-3">
-                                <AnimatedFontistoIcon name="share" size={18} color={"black"} />
-                                <Text className="text-neutral-700 font-normal text-xl tracking-wider ml-2">{t("shareApplication")}</Text>
-                            </View>
-                        </Pressable>
-                    </Animated.View>
-                </View>
-            }
         </View>
     );
 }

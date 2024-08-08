@@ -8,8 +8,6 @@ import Feather from 'react-native-vector-icons/Feather';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import NoDataFound from '../../../components/NoDataFound/NoDataFound';
 import ApiContext from '../../../context/ApiContext';
-
-
 const { width } = Dimensions.get('screen');
 const AnimatedFeatherIcon = Animated.createAnimatedComponent(Feather);
 const AnimatedFontistoIcon = Animated.createAnimatedComponent(Fontisto);
@@ -116,12 +114,12 @@ export default function AllUserDirectory() {
                         </View>
                         <View className="flex-1">
                             <View className="w-full overflow-hidden">
-                                <Text className="text-lg font-bold w-full overflow-hidden text-ellipsis break-words">
+                                <Text className="text-lg font-bold w-full text-black overflow-hidden text-ellipsis break-words">
                                     {item?.lastname} {item?.firstname} {item?.middlename}
                                 </Text>
                             </View>
-                            <View className="flex flex-row items-center w-full flex-wrap">
-                                <Text className="text-sm font-semibold">
+                            <View className="flex flex-row items-center w-full flex-wrap text-black">
+                                <Text className="text-sm font-semibold text-black">
                                     Village:{` `}
                                     {removeTextAfterSlash(location?.village)} - {removeTextAfterSlash(item?.city)}
                                 </Text>
@@ -152,7 +150,6 @@ export default function AllUserDirectory() {
                                 size={32}
                                 color="black"
                             />
-                            {/* <Image className="w-16 h-16" source={require("../../../assets/allUser.png")} /> */}
                         </View>
                         <View>
                             <Text className="text-2xl text-black font-bold">{t("AllUser")}</Text>
@@ -163,7 +160,7 @@ export default function AllUserDirectory() {
 
                 <View className="w-full flex flex-row bg-white rounded-xl shadow-custom-elevation shadow-black shadow-2xl items-center mt-5 mb-3" style={{ shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.3, shadowRadius: 4, elevation: 5 }}>
                     <TextInput
-                        placeholder="Search user"
+                        placeholder={t("SearchUser")}
                         placeholderTextColor="grey"
                         className={`basis-[90%] ${Platform.OS == "ios" ? "p-3" : ""} tracking-wider text-neutral-700 pl-2`}
                         value={search}
