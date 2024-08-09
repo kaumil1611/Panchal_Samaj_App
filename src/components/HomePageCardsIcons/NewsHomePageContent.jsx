@@ -26,6 +26,7 @@ const parseAndRenderText = (text) => {
 };
 
 const NewsHomePageContent = ({ navigation }) => {
+
     const { t } = useTranslation();
     const { newsListing } = useContext(ApiContext);
     const { defaultLanguage } = useContext(GlobalContext);

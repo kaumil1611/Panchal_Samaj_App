@@ -42,7 +42,7 @@ const HomePageCardContents = ({ content, image, redirectTo, functionality, navig
     return (
         <>
             {content && (
-                <View className={`bg-white rounded-[15px] w-[90%] shadow-input shadow-custom-elevation ${Platform.OS == "ios" ? "shadow-sm" : "shadow-md shadow-black"}`}>
+                <View className={`bg-white rounded-[15px] w-[90%] shadow-input shadow-custom-elevation mb-3 ${Platform.OS == "ios" ? "shadow-sm" : "shadow-md shadow-black"}`}>
                     <View>
                         <Animated.View style={[{ transform: [{ scale }] }]}>
                             <TouchableOpacity
@@ -67,7 +67,7 @@ const HomePageCardContents = ({ content, image, redirectTo, functionality, navig
                             </Text>
                         </View>
                     </View>
-                </View >
+                </View>
             )}
         </>
     );
