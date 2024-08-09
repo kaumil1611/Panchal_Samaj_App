@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider } from 'native-base';
 import { Root } from 'popup-ui';
 import React, { useContext, useEffect } from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
+import { SafeAreaView, StatusBar, Appearance } from 'react-native';
 import 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import changeNavigationBarColor from 'react-native-navigation-bar-color';
@@ -58,7 +58,7 @@ const App = () => {
     }
     setIsAuthScreenActive(currentRoute === 'Auth');
   };
-
+  const colorScheme = Appearance.getColorScheme();
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Root>
@@ -76,7 +76,7 @@ const App = () => {
               </NavigationContainer>
             </NativeBaseProvider>
           </PaperProvider>
-          <StatusBar barStyle={'dark-content'} />
+          <StatusBar barStyle={`${colorScheme == 'dark' ? 'light-content' : 'dark-content'}`} />
         </SafeAreaProvider>
       </Root>
     </GestureHandlerRootView>
