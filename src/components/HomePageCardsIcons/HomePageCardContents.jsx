@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { Animated, Dimensions, Image, Platform, StyleSheet, Text, View } from 'react-native';
+import { Animated, Dimensions, Image, Platform, Text, View } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const HomePageCardContents = ({ content, image, redirectTo, functionality, navigation, handleSetSelectedVillage, villageListing }) => {
@@ -42,47 +42,35 @@ const HomePageCardContents = ({ content, image, redirectTo, functionality, navig
     return (
         <>
             {content && (
-                <View
-                    className={`rounded-[15px] bg-white shadow-input shadow-custom-elevation ${Platform.OS == "ios" ? "shadow-sm" : "shadow-md shadow-black"}`}
-                    style={styles.container}
-                >
-                    <Animated.View style={[{ transform: [{ scale }] }]}>
-                        <TouchableOpacity
-                            onPress={redirect}
-                            activeOpacity={1}
-                            onPressIn={onPressIn}
-                            onPressOut={onPressOut}
-                            className="flex items-center justify-center relative"
-                        >
-                            <Image
-                                className={`${windowWidth < 376 ? "w-10" : "w-10"}  ${windowWidth < 376 ? "h-10" : "h-10"}  font-semibold text-center`}
-                                source={image}
-                            />
-                            <View>
-                                <View>
-                                    <Text className={` ${windowWidth < 376 ? "text-[14px]" : windowWidth < 376 ? "text-xl" : "text-[14px]"} text-black font-semibold text-center tracking-wider`}>
-                                        {content}
-                                    </Text>
-                                </View>
-                            </View>
-                        </TouchableOpacity>
-                    </Animated.View>
-                </View>
-            )}
+                <View className={`bg-white rounded-[15px] w-[90%] shadow-input shadow-custom-elevation ${Platform.OS == "ios" ? "shadow-sm" : "shadow-md shadow-black"}`}>
+                    <View>
+                        <Animated.View style={[{ transform: [{ scale }] }]}>
+                            <TouchableOpacity
+                                onPress={redirect}
+                                activeOpacity={1}
+                                onPressIn={onPressIn}
+                                onPressOut={onPressOut}
+                                className="flex items-center justify-center"
+                            >
+                                <Image
+                                    className={`${windowWidth < 376 ? "w-10" : "w-10"}  ${windowWidth < 376 ? "h-10" : "h-10"}  font-semibold text-center mt-2`}
+                                    source={image}
+                                />
 
+                            </TouchableOpacity>
+                        </Animated.View>
+                    </View>
+                    <View>
+                        <View>
+                            <Text className={` ${windowWidth < 376 ? "text-[14px]" : windowWidth < 376 ? "text-xl" : "text-[14px]"} text-black font-semibold text-center tracking-wider mb-3`}>
+                                {content}
+                            </Text>
+                        </View>
+                    </View>
+                </View >
+            )}
         </>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 12,
-        marginBottom: 10
-    },
-    smallContainer: {
-        width: 80,
-        height: 90
-    },
-});
 
 export default HomePageCardContents;
