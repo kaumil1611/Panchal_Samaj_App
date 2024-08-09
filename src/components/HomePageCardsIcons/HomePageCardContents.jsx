@@ -68,7 +68,7 @@ const HomePageCardContents = ({ content, image, redirectTo, functionality, navig
                         </View>
                     </View>
                 </View>
-            )}
+              )}
         </>
     );
 };
