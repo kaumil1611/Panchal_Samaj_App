@@ -34,19 +34,26 @@ const Login = ({ navigation }) => {
 
     const schema = yup.object().shape({
 
-        email_or_mobile: yup.string().required(t('emailOrMobileRequired')).test(
-            'is-email-or-phone',
-            t('invalidEmailOrPhone'),
-            function (value) {
-                if (/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/.test(value)) {
-                    return true;
-                }
-                else if (/^\d/.test(value)) {
-                    return /^\d{10,}$/.test(value);
-                }
-                return false;
+        email_or_mobile: yup
+        .string()
+        .transform(value => (value ? value.toLowerCase() : ''))
+        .required(t('emailOrMobileRequired'))
+        .test(
+          'is-email-or-phone',
+          t('invalidEmailOrPhone'),
+          function (value) {
+            // Check if the value is a valid email
+            if (/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/.test(value)) {
+              return true;
             }
+            // Check if the value is a valid phone number
+            else if (/^\d/.test(value)) {
+              return /^\d{10,}$/.test(value);
+            }
+            return false;
+          }
         ),
+      
 
         password: yup.string().required(t('passwordisrequired')).matches(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
@@ -131,7 +138,7 @@ const Login = ({ navigation }) => {
                                 name="email_or_mobile"
                                 render={({ field: { onChange, onBlur, value } }) => (
                                     <TextInput
-                                        className="rounded-lg p-3 text-black"
+                                        className="rounded-lg p-3 text-black text-xs"
                                         onBlur={onBlur}
                                         placeholder={t("emailOrMobileNumberPlaceHolder")}
                                         onChangeText={onChange}
@@ -155,7 +162,7 @@ const Login = ({ navigation }) => {
                                 name="password"
                                 render={({ field: { onChange, onBlur, value } }) => (
                                     <TextInput
-                                        className="rounded-lg p-3 text-black w-[80%]"
+                                        className="rounded-lg p-3 text-black w-[80%] text-xs"
                                         onBlur={onBlur}
                                         placeholder={t("passwordPlaceHolder")}
                                         placeholderTextColor="grey"

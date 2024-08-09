@@ -90,7 +90,7 @@ const RootNavigator = () => {
                 <RootStack.Screen name="Setings" component={SettingBottomSheet} options={{ headerTitle: t("settings") }} />
                 <RootStack.Screen name="EmailSupport" component={EmailSupport} options={{ headerTitle: t("EmailSupport") }} />
                 <RootStack.Screen name="Faqs" component={Faqs} options={{ headerTitle: 'Faqs' }} />
-                <RootStack.Screen name="TermAndCondition" component={TermAndCondition} options={{ headerTitle: 'Term & Condition' }} />
+                <RootStack.Screen name="TermAndCondition" component={TermAndCondition} options={{ headerTitle: t("termsAndCondition") }} />
                 <RootStack.Screen name="ChangePassword" component={ChangePassword} options={{ headerTitle: t("changePassword") }} />
                 <RootStack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerTitle: "Forgot Password" }} />
                 <RootStack.Screen name="Login" component={Login} options={{ headerShown: false }} />

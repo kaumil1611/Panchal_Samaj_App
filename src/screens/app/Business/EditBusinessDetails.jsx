@@ -29,7 +29,11 @@ const schema = yup.object().shape({
     businessName: yup.string().required('Business name is required'),
     role: yup.string(),
     address: yup.string().required('Address is required'),
-    businessEmail: yup.string().email('Invalid business email'),
+    businessEmail: yup
+  .string()
+  .email('Invalid business email')
+  .transform(value => (value ? value.toLowerCase() : ''))
+  .required('Business email is required'),
     businessContactNumber: yup.string(),
     businessShortDetail: yup.string().required('Business short detail is required'),
     businessType: yup.string().required('Business type is required'),

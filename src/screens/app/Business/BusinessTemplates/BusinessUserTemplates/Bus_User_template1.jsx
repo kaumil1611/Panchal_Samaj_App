@@ -187,7 +187,7 @@ const Bus_User_template1 = ({ route }) => {
 
                             <View className="flex flex-row items-center flex-wrap mb-2">
 
-                                <Text className="text-black text-base font-bold tracking-wide">Mobile Number :- </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Mobile Number : </Text>
 
                                 <TouchableOpacity onPress={() => handleCallOpenLink("+91" + templateOneDetails?.businessContactNumber)}>
                                     <View>
@@ -213,7 +213,7 @@ const Bus_User_template1 = ({ route }) => {
                             </View>
 
                             <View className="flex flex-row items-center flex-wrap mb-2">
-                                <Text className="text-black text-base font-bold tracking-wide">Address :- </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Address : </Text>
                                 <TouchableOpacity
                                     className="ms-2"
                                     onPress={() => Linking.openURL('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(templateOneDetails?.address))}
@@ -223,7 +223,7 @@ const Bus_User_template1 = ({ route }) => {
                             </View>
 
                             <View className="flex flex-row items-center flex-wrap mb-2">
-                                <Text className="text-black text-base font-bold tracking-wide">Company Email :- </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Company Email : </Text>
                                 <TouchableOpacity onPress={() => handleClickOnMail(templateOneDetails?.businessEmail)}>
                                     <Text className="text-[#5176df] text-md font-medium">{templateOneDetails?.businessEmail}</Text>
                                 </TouchableOpacity>
@@ -231,7 +231,7 @@ const Bus_User_template1 = ({ route }) => {
 
                             {templateOneDetails?.businessWebsite && (
                                 <View className="flex flex-row items-center flex-wrap mb-2">
-                                    <Text className="text-black text-base font-bold tracking-wide">Website :- </Text>
+                                    <Text className="text-black text-base font-bold tracking-wide">Website : </Text>
                                     <TouchableOpacity onPress={handlePress}>
                                         <Text className="text-[#5176df] text-sm font-semibold">{templateOneDetails?.businessWebsite}</Text>
                                     </TouchableOpacity>
@@ -239,93 +239,84 @@ const Bus_User_template1 = ({ route }) => {
                             )}
 
                             <View className="flex flex-row items-center flex-wrap mb-2">
-                                <Text className="text-black text-base font-bold tracking-wide">Short Description :- </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Short Description : </Text>
                                 <Text className="text-black text-sm text-justify">{templateOneDetails?.businessShortDetail}</Text>
                             </View>
 
                             {templateOneDetails?.businessLongDetail && (
                                 <View className="flex flex-row items-center flex-wrap mb-2">
-                                    <Text className="text-black text-base font-bold tracking-wide">Long description :- </Text>
+                                    <Text className="text-black text-base font-bold tracking-wide">Long description : </Text>
                                     <Text className="text-black text-sm text-justify">{templateOneDetails?.businessLongDetail}</Text>
                                 </View>
                             )}
+                        </View>
+                        <View>
+                            {(faceBookLink || linkedinLink || instagramLink || twitterLink) && (
+                                <View>
+                                    <Text className="text-center text-md text-red-600 font-semibold mt-2">
+                                        Connect with me on
+                                    </Text>
+                                </View>
+                            )}
 
+                            {(faceBookLink || linkedinLink || instagramLink || twitterLink) && (
+                                <View className="flex flex-row justify-around items-center mt-5 mb-3">
+                                    {faceBookLink && (
+                                        <TouchableOpacity
+                                            activeOpacity={1}
+                                            onPressIn={onPressInFaceBook}
+                                            onPressOut={onPressOutFaceBook}
+                                            onPress={() => openLink(faceBookLink)}
+                                        >
+                                            <Animated.View style={[{ transform: [{ scale: faceBookScale }] }]}>
+                                                <AnimatedFontistoIcon name="facebook" size={25} color="#0866ff" />
+                                            </Animated.View>
+                                        </TouchableOpacity>
+                                    )}
+                                    {linkedinLink && (
+                                        <TouchableOpacity
+                                            activeOpacity={1}
+                                            onPressIn={onPressInLinkedin}
+                                            onPressOut={onPressOutLinkedin}
+                                            onPress={() => openLink(linkedinLink)}
+                                        >
+                                            <Animated.View style={[{ transform: [{ scale: linkedinScale }] }]}>
+                                                <AnimatedFontistoIcon name="linkedin" size={25} color="#0866ff" />
+                                            </Animated.View>
+                                        </TouchableOpacity>
+                                    )}
+                                    {instagramLink && (
+                                        <TouchableOpacity
+                                            activeOpacity={1}
+                                            onPressIn={onPressInInsta}
+                                            onPressOut={onPressOutInsta}
+                                            onPress={() => openLink(instagramLink)}
+                                        >
+                                            <Animated.View style={[{ transform: [{ scale: instaScale }] }]}>
+                                                <AnimatedFontistoIcon name="instagram" size={25} color="#f700b2" />
+                                            </Animated.View>
+                                        </TouchableOpacity>
+                                    )}
+                                    {twitterLink && (
+                                        <TouchableOpacity
+                                            activeOpacity={1}
+                                            onPressIn={onPressInTwitter}
+                                            onPressOut={onPressOutTwitter}
+                                            onPress={() => openLink(twitterLink)}
+                                        >
+                                            <Animated.View style={[{ transform: [{ scale: twitterScale }] }]}>
+                                                <TwitterIcon width={25} height={25} color='red' />
+                                            </Animated.View>
+                                        </TouchableOpacity>
+                                    )}
+                                </View>
+                            )}
                         </View>
 
-                        {faceBookLink || linkedinLink || instagramLink || twitterLink && (
-                            <View>
-                                <Text className="text-center text-md text-red-600 font-semibold mt-2">Connect with me on</Text>
-                            </View>
-                        )}
-
-                        {faceBookLink || linkedinLink || instagramLink || twitterLink && (
-                            <View className="flex flex-row justify-around items-center mt-5 mb-3">
-                                {faceBookLink && (
-                                    <TouchableOpacity
-                                        activeOpacity={1}
-                                        onPressIn={onPressInFaceBook}
-                                        onPressOut={onPressOutFaceBook}
-                                        onPress={() => openLink(faceBookLink)}
-                                    >
-                                        <Animated.View style={[{ transform: [{ scale: faceBookScale }] }]}>
-                                            <AnimatedFontistoIcon
-                                                name="facebook"
-                                                size={25}
-                                                color="#0866ff"
-                                            />
-                                        </Animated.View>
-                                    </TouchableOpacity>
-                                )}
-                                {linkedinLink && (
-                                    <TouchableOpacity
-                                        activeOpacity={1}
-                                        onPressIn={onPressInLinkedin}
-                                        onPressOut={onPressOutLinkedin}
-                                        onPress={() => openLink(linkedinLink)}
-                                    >
-                                        <Animated.View style={[{ transform: [{ scale: linkedinScale }] }]}>
-                                            <AnimatedFontistoIcon
-                                                name="linkedin"
-                                                size={25}
-                                                color="#0866ff"
-                                            />
-                                        </Animated.View>
-                                    </TouchableOpacity>
-                                )}
-                                {instagramLink && (
-                                    <TouchableOpacity
-                                        activeOpacity={1}
-                                        onPressIn={onPressInInsta}
-                                        onPressOut={onPressOutInsta}
-                                        onPress={() => openLink(instagramLink)}
-                                    >
-                                        <Animated.View style={[{ transform: [{ scale: instaScale }] }]}>
-                                            <AnimatedFontistoIcon
-                                                name="instagram"
-                                                size={25}
-                                                color="#f700b2"
-                                            />
-                                        </Animated.View>
-                                    </TouchableOpacity>
-                                )}
-                                {twitterLink && (
-                                    <TouchableOpacity
-                                        activeOpacity={1}
-                                        onPressIn={onPressInTwitter}
-                                        onPressOut={onPressOutTwitter}
-                                        onPress={() => openLink(twitterLink)}
-                                    >
-                                        <Animated.View style={[{ transform: [{ scale: twitterScale }] }]}>
-                                            <TwitterIcon width={25} height={25} color='red' />
-                                        </Animated.View>
-                                    </TouchableOpacity>
-                                )}
-                            </View>
-                        )}
 
                         <View className="flex flex-row justify-center gap-2">
                             <Text className="text-black font-semibold">
-                                Created by :
+                                Created by :-
                             </Text>
                             <Text className="text-black font-semibold">
                                 {formatDate(templateOneDetails?.dateOfOpeningJob)}

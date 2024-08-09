@@ -185,7 +185,7 @@ export default function AllUserDirectory() {
                     keyExtractor={(item, index) => index.toString()}
                 />
             ) : userOfDirectory && userOfDirectory.length === 0 ? (
-                <NoDataFound message={"No User Found"} />
+                <NoDataFound message={"No User Found."} />
             ) : (
                 <Animated.FlatList
                     data={userOfDirectory}

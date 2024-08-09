@@ -176,7 +176,7 @@ const VillageListing = ({ navigation, route }) => {
                 {loading ? (
                     <ActivityIndicator size="large" color="#0000ff" className="flex flex-1 justify-center items-center text-center" />
                 ) : allVillagesListing.length === 0 ? (
-                    <NoDataFound message="No Village Found" />
+                    <NoDataFound message="No village found." />
                 ) : (
                     <FlatList
                         data={allVillagesListing}

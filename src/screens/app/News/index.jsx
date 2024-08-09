@@ -16,6 +16,7 @@ const Favourites = ({ navigation }) => {
         })();
     }, []);
 
+
     return (
         <View style={styles.container}>
             <NewsList navigation={navigation} news={news} loading={loading} />
@@ -25,7 +26,7 @@ const Favourites = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingBottom: 80
+        paddingBottom: 80,
     },
 });
 

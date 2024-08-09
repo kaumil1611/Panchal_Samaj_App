@@ -13,7 +13,7 @@ function EmailSupport({ navigation }) {
     const schema = yup.object().shape({
         subject: yup.string().required(t("Subjectisrequired")),
         message: yup.string().required(t("Messageisrequired")),
-        email: yup.string().email(t("Invalidemailformat")).required(t("Emailisrequired")),
+        email: yup.string().email(t("Invalidemailformat")).transform(value => (value ? value.toLowerCase() : '')).required(t("Emailisrequired")),
     });
     const { supportMailSend, contactUsPageDetails } = useContext(ApiContext);
     const [emailSupportImage, setEmailSupportImage] = useState("");

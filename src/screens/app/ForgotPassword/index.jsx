@@ -40,9 +40,11 @@ const ForgotPassword = ({ navigation }) => {
 
     const emailSchema = yup.object().shape({
         EnterEmail: yup
-            .string()
-            .required(t("EmailIsRequired"))
-            .email(t("Invalidemailaddress")),
+        .string()
+        .transform(value => (value ? value.toLowerCase() : ''))
+        .required(t("EmailIsRequired"))
+        .email(t("Invalidemailaddress")),
+      
     });
 
     const otpSchema = yup.object().shape({
@@ -197,7 +199,7 @@ const ForgotPassword = ({ navigation }) => {
                                                     <Text className="font-bold text-black text-base">
                                                         {t("PleaseEnterEmail")}
                                                     </Text>
-                                                    <Text className="text-red-600 text-[17px] h-3 mb-4 ml-1">*</Text>
+                                                    <Text className="text-red-600 text-[17px] mb-4 ml-1">*</Text>
                                                 </View>
                                                 <View
                                                     className={`w-full my-2 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
@@ -238,7 +240,7 @@ const ForgotPassword = ({ navigation }) => {
                                                     </View>
                                                     <View className="w-full flex flex-row items-center">
                                                         <Text className="font-bold text-base text-neutral-700">OTP</Text>
-                                                        <Text className="text-red-600 text-[17px] h-3 mb-4 ml-1">*</Text>
+                                                        <Text className="text-red-600 text-[17px] mb-4 ml-1">*</Text>
                                                     </View>
                                                     <View
                                                         className={`w-full my-2 px-4 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
@@ -290,7 +292,7 @@ const ForgotPassword = ({ navigation }) => {
                                                             </View>
                                                             <View className="w-full flex flex-row items-center">
                                                                 <Text className="font-bold text-base text-neutral-700">New Password</Text>
-                                                                <Text className="text-red-600 text-[17px] h-3 mb-4 ml-1">*</Text>
+                                                                <Text className="text-red-600 text-[17px] ml-1">*</Text>
                                                             </View>
                                                             <View
                                                                 className={`w-full my-1 px-4 h-12 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"
@@ -323,7 +325,7 @@ const ForgotPassword = ({ navigation }) => {
                                                         <View className="relative flex px-8 mt-3">
                                                             <View className="w-full flex flex-row items-center">
                                                                 <Text className="font-bold text-base text-neutral-700">Confirm Password</Text>
-                                                                <Text className="text-red-600 text-[17px] h-3 mb-4 ml-1">*</Text>
+                                                                <Text className="text-red-600 text-[17px] ml-1">*</Text>
                                                             </View>
                                                             <View
                                                                 className={`w-full my-2 px-4 h-12 flex-row justify-between bg-[#F3F5F7] rounded-lg items-center shadow-input ${Platform.OS === "android" ? "shadow-black shadow-custom-elevation" : "border border-gray-200 shadow"

@@ -9,7 +9,7 @@ import { GlobalContext } from '../../../context/globalState';
 
 const { width } = Dimensions.get('screen');
 
-export default function Member() {
+function Member() {
 
     const scrollY = useRef(new Animated.Value(0)).current;
     const [height1, setHeight1] = useState(100);
@@ -243,3 +243,5 @@ const styles = StyleSheet.create({
         elevation: 4
     }
 });
+
+export default React.memo(Member);

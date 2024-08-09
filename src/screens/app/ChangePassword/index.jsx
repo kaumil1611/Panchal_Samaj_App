@@ -98,12 +98,11 @@ const ChangePassword = ({ navigation }) => {
                                 showsHorizontalScrollIndicator={false}
                                 showsVerticalScrollIndicator={false}
                             >
-                                {/* <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ flex: 1 }} showsVerticalScrollIndicator={false}> */}
                                 <View className="pb-[50%] h-[90%] w-[100%] px-8">
                                     <View>
                                         <View className="w-full flex flex-row gap-[0.5px]">
                                             <Text className="font-extrabold text-base tracking-wider text-black">{t('currentpassword')}:</Text>
-                                            <Text style={{ color: 'red', fontSize: 17, height: 13 }}>*</Text>
+                                            <Text className="text-red-600 text-[17px] ml-1">*</Text>
                                         </View>
                                         <View className={`w-full my-1 px-4 flex-row justify-between bg-[#F3F5F7] rounded-[15px] items-center shadow-input mx-0.5 shadow-custom-elevation shadow-md ${Platform.OS == "android" ? "shadow-black" : "border border-gray-200 shadow-sm"} `}>
                                             <Controller
@@ -136,7 +135,7 @@ const ChangePassword = ({ navigation }) => {
                                     <View className="my-2">
                                         <View className="w-full flex flex-row gap-[0.5px]">
                                             <Text className="font-extrabold text-base tracking-wider text-black">{t('newPassword')}:</Text>
-                                            <Text style={{ color: 'red', fontSize: 17, height: 13 }}>*</Text>
+                                            <Text className="text-red-600 text-[17px] ml-1">*</Text>
                                         </View>
                                         <View className={`w-full my-1 px-4 flex-row justify-between bg-[#F3F5F7] rounded-[15px] items-center shadow-input mx-0.5 shadow-custom-elevation shadow-md ${Platform.OS == "android" ? "shadow-black" : "border border-gray-200 shadow-sm"} `}>
                                             <Controller
@@ -169,7 +168,7 @@ const ChangePassword = ({ navigation }) => {
                                     <View>
                                         <View className="w-full flex flex-row gap-[0.5px]">
                                             <Text className="font-extrabold text-base tracking-wider text-black">{t('confirmpassword')}:</Text>
-                                            <Text style={{ color: 'red', fontSize: 17, height: 13 }}>*</Text>
+                                            <Text className="text-red-600 text-[17px] ml-1">*</Text>
                                         </View>
                                         <View className={`w-full my-1 px-4 flex-row justify-between bg-[#F3F5F7] rounded-[15px] items-center shadow-input mx-0.5 shadow-custom-elevation shadow-md ${Platform.OS == "android" ? "shadow-black" : "border border-gray-200 shadow-sm"} `}>
                                             <Controller

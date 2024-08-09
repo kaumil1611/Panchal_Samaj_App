@@ -32,6 +32,7 @@ const EditUserProfile = ({ navigation }) => {
         middlename: yup.string().required(t('pleaseentermiddlename')),
         email: yup.string()
             .matches(emailRegex, t('Invalidemailaddress'))
+            .transform(value => (value ? value.toLowerCase() : ''))
             .required(t('pleaseenteremail')),
         mobile_number: yup.string().required(t('pleaseentermobilenumber')).matches(/^[0-9]{10}$/, t('pleaseenteravalidmobilenumber')),
         address: yup.string().required(t('pleaseenteraddress')),

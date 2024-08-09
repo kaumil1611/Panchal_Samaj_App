@@ -83,7 +83,6 @@ export default function AddFamilyDetails({ navigation, route }) {
 
     useEffect(() => {
         if (Object.keys(errors).length > 0) {
-            // const errorMessage = Object.values(errors).map(error => error.message).join(', ');
             toastMessage("Please fill all the required fields");
         }
     }, [errors]);
@@ -106,7 +105,7 @@ export default function AddFamilyDetails({ navigation, route }) {
                                 <View>
                                     <View className="w-full mx-1 flex flex-row gap-[0.5px]">
                                         <Text className="font-extrabold text-base tracking-wider text-neutral-700">{t('firstname')}:</Text>
-                                        <Text style={{ color: 'red', fontSize: 17, height: 13 }}>*</Text>
+                                        <Text className="text-red-600 text-[17px] mt-1 ml-1">*</Text>
                                     </View>
                                     <View className=" w-full mt-2">
                                         <Controller
@@ -131,7 +130,7 @@ export default function AddFamilyDetails({ navigation, route }) {
                                 <View>
                                     <View className="w-full mx-1 flex flex-row gap-[0.5px]">
                                         <Text className="font-extrabold text-base tracking-wider text-neutral-700">{t('lastname')}:</Text>
-                                        <Text style={{ color: 'red', fontSize: 17, height: 13 }}>*</Text>
+                                        <Text className="text-red-600 text-[17px] mt-1 ml-1">*</Text>
                                     </View>
                                     <View className=" w-full mt-2">
                                         <Controller
@@ -156,7 +155,7 @@ export default function AddFamilyDetails({ navigation, route }) {
                                 <View className="my-1">
                                     <View className="w-full  flex flex-row gap-[0.5px]">
                                         <Text className="font-extrabold ml-1 text-base tracking-wider text-neutral-700">{t('middlename')}:</Text>
-                                        <Text style={{ color: 'red', fontSize: 17, height: 13 }}>*</Text>
+                                        <Text className="text-red-600 text-[17px] mt-1 ml-1">*</Text>
                                     </View>
                                     <View className=" w-full mt-2">
                                         <Controller
@@ -225,7 +224,7 @@ export default function AddFamilyDetails({ navigation, route }) {
                                 <View>
                                     <View className="w-full mx-1 flex flex-row gap-[0.5px]">
                                         <Text className="font-extrabold text-base tracking-wider text-neutral-700">{t('gender')}:</Text>
-                                        <Text style={{ color: 'red', fontSize: 17, height: 13 }}>*</Text>
+                                        <Text className="text-red-600 text-[17px] mt-1 ml-1">*</Text>
                                     </View>
                                     <View className=" w-full mt-2">
                                         <View className="mx-1 mb-2">
@@ -253,7 +252,7 @@ export default function AddFamilyDetails({ navigation, route }) {
                                 <View>
                                     <View className="w-full mx-1 flex flex-row gap-[0.5px]">
                                         <Text className="font-extrabold text-base tracking-wider text-neutral-700">{t('education')}:</Text>
-                                        <Text style={{ color: 'red', fontSize: 17, height: 13 }}>*</Text>
+                                        <Text className="text-red-600 text-[17px] mt-1 ml-1">*</Text>
                                     </View>
                                     <View className=" w-full mt-2">
                                         <Controller
@@ -278,7 +277,7 @@ export default function AddFamilyDetails({ navigation, route }) {
                                 <View>
                                     <View className="w-full mx-1 flex flex-row gap-[0.5px]">
                                         <Text className="font-extrabold text-base tracking-wider text-neutral-700">{t('address')}:</Text>
-                                        <Text style={{ color: 'red', fontSize: 17, height: 13 }}>*</Text>
+                                        <Text className="text-red-600 text-[17px] mt-1 ml-1">*</Text>
                                     </View>
                                     <View className=" w-full mt-2">
                                         <Controller
@@ -303,7 +302,7 @@ export default function AddFamilyDetails({ navigation, route }) {
                                 <View>
                                     <View className="w-full mx-1 flex flex-row gap-[0.5px]">
                                         <Text className="font-extrabold text-base tracking-wider text-neutral-700">{t('job')}:</Text>
-                                        <Text style={{ color: 'red', fontSize: 17, height: 13 }}>*</Text>
+                                        <Text className="text-red-600 text-[17px] mt-1 ml-1">*</Text>
                                     </View>
                                     <View className=" w-full mt-2">
                                         <Controller
@@ -374,7 +373,7 @@ export default function AddFamilyDetails({ navigation, route }) {
                                 <View>
                                     <View className="w-full mx-1 flex flex-row gap-[0.5px]">
                                         <Text className="font-extrabold text-base tracking-wider text-neutral-700">{t('maritalstatus')}:</Text>
-                                        <Text style={{ color: 'red', fontSize: 17, height: 13 }}>*</Text>
+                                        <Text className="text-red-600 text-[17px] mt-1 ml-1">*</Text>
                                     </View>
                                     <View className=" w-full mt-2">
                                         <View className="mx-1 mb-2 bg-[#eee]" style={styles.input}>
@@ -413,7 +412,7 @@ export default function AddFamilyDetails({ navigation, route }) {
                                 <View className=" w-full mt-2">
                                     <View className="w-full mb-2 mx-1 flex flex-row gap-[0.5px]">
                                         <Text className="font-extrabold text-base tracking-wider text-neutral-700">{t('relationship')}:</Text>
-                                        <Text style={{ color: 'red', fontSize: 17, height: 13 }}>*</Text>
+                                        <Text className="text-red-600 text-[17px] mt-1 ml-1">*</Text>
                                     </View>
                                     <View className="mx-1 mb-2 bg-[#eee]" style={styles.input}>
                                         <Controller

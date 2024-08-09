@@ -131,7 +131,7 @@ const Template1 = () => {
 
                         <View className="w-full">
                             <View className="flex flex-row items-center flex-wrap mb-2">
-                                <Text className="text-black text-base font-bold tracking-wide">Mobile Number :- </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Mobile Number : </Text>
                                 <TouchableOpacity onPress={() => handleCallOpenLink("+91" + "9173211901")}>
                                     <View>
                                         <Text className="text-[#5176df] text-sm font-semibold">
@@ -150,7 +150,7 @@ const Template1 = () => {
                             </View>
 
                             <View className="flex flex-row items-center flex-wrap mb-2">
-                                <Text className="text-black text-base font-bold tracking-wide">Address :- </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Address : </Text>
                                 <TouchableOpacity
                                     className="ms-2"
                                     onPress={() => Linking.openURL('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent("B-382 Nishitpark aadinathnagar odhav ahmedabad"))}
@@ -160,26 +160,26 @@ const Template1 = () => {
                             </View>
 
                             <View className="flex flex-row items-center flex-wrap mb-2">
-                                <Text className="text-black text-base font-bold tracking-wide">Company Email :- </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Company Email : </Text>
                                 <TouchableOpacity onPress={() => handleClickOnMail("vishwprajapati66@gmail.com")}>
                                     <Text className="text-[#5176df] text-md font-medium">vishwprajapati66@gmail.com</Text>
                                 </TouchableOpacity>
                             </View>
 
                             <View className="flex flex-row items-center flex-wrap mb-2">
-                                <Text className="text-black text-base font-bold tracking-wide">Website :- </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Website : </Text>
                                 <TouchableOpacity onPress={handlePress}>
                                     <Text className="text-[#5176df] text-sm font-semibold">https://international.ajaymodi.com/</Text>
                                 </TouchableOpacity>
                             </View>
 
                             <View className="flex flex-row items-center flex-wrap mb-2">
-                                <Text className="text-black text-base font-bold tracking-wide">Short Description :- </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Short Description : </Text>
                                 <Text className="text-black text-sm text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</Text>
                             </View>
 
                             <View className="flex flex-row items-center flex-wrap mb-2">
-                                <Text className="text-black text-base font-bold tracking-wide">Long description :- </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Long description : </Text>
                                 <Text className="text-black text-sm text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</Text>
                             </View>
 

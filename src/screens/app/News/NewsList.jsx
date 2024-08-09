@@ -4,6 +4,7 @@ import { Animated, Image, Platform, StyleSheet, Text, TouchableOpacity, View } f
 import { FlatList } from 'react-native-gesture-handler';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import { GlobalContext } from '../../../context/globalState';
+import NoDataFound from '../../../components/NoDataFound/NoDataFound';
 
 function NewsList({ navigation, news, loading }) {
 
@@ -13,11 +14,11 @@ function NewsList({ navigation, news, loading }) {
 
     const formatDate = (timestamp) => {
         if (!timestamp) {
-            return 'Invalid date';
+            return '';
         }
         const date = new Date(Number(timestamp));
         if (isNaN(date)) {
-            return 'Invalid date';
+            return '';
         }
         const day = date.getDate().toString().padStart(2, '0');
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -60,53 +61,63 @@ function NewsList({ navigation, news, loading }) {
         };
 
         return (
-            <Animated.View style={[{ transform: [{ scale }] }]} className="flex justify-center items-center" key={item?._id}>
-                <TouchableOpacity
-                    activeOpacity={1}
-                    onPressIn={onPressIn}
-                    onPressOut={onPressOut}
-                    onPress={() => { openNewsDetailsPage(item?._id); }}
-                >
-                    <View className="bg-white shadow-2xl rounded-3xl w-[100%] mt-4 p-3 mx-5 mb-3" style={styles.shadowOfCard}>
-                        <View className={`overflow-hidden object-cover  ${Platform.OS == "ios" ? "shadow-lg" : "shadow-black shadow-xl"} `}>
-                            <View className="relative">
-                                <Image
-                                    className="object-cover"
-                                    source={{ uri: IMAGE_URL + item.image }}
-                                    style={{ height: 180, width: '100%', borderRadius: 20 }}
-                                />
-                                {item.createdBy &&
-                                    <View className="rounded-bl-[20px] bg-gray-300 absolute bottom-0 px-2">
-                                        <View className="flex flex-row items-center gap-2">
-                                            <Text className="font-bold text-black text-base">
-                                                Created By
-                                            </Text>
-                                            <Text className="text-base text-black font-medium">
-                                                {item?.createdBy}
+            <>
+                {item ?
+                    <Animated.View style={[{ transform: [{ scale }] }]} className="w-full px-4" key={item?._id}>
+                        <TouchableOpacity
+                            activeOpacity={1}
+                            className=""
+                            onPressIn={onPressIn}
+                            onPressOut={onPressOut}
+                            onPress={() => { openNewsDetailsPage(item?._id); }}
+                        >
+                            <View className="bg-white shadow-2xl w-[100%] rounded-3xl mt-4 p-3  mb-3" style={styles.shadowOfCard}>
+                              <View className={`overflow-hidden object-cover ${Platform.OS == "ios" ? "shadow-lg" : "shadow-black shadow-xl"} `}>
+                                    <View className="relative">
+                                        <Image
+                                            className="object-cover"
+                                            source={{ uri: IMAGE_URL + item?.image }}
+                                            style={{ height: 180, width: '100%', borderRadius: 20 }}
+                                        />
+                                        {item?.createdBy &&
+                                            <View className="rounded-bl-[20px] bg-gray-300 absolute bottom-0 px-2">
+                                                <View className="flex flex-row items-center gap-2">
+                                                    <Text className="font-bold text-black text-base">
+                                                        Created By
+                                                    </Text>
+                                                    <Text className="text-base text-black font-medium">
+                                                        {item?.createdBy}
+                                                    </Text>
+                                                </View>
+                                            </View>
+                                        }
+                                    </View>
+                                    <View className="flex flex-row justify-between flex-wrap items-center p-2">
+                                        <View>
+                                            <Text className='font-bold text-[19px] text-black tracking-tighter text-justify my-2'>
+                                                {defaultLanguage == "en" ? item?.titleE : item?.titleG}
                                             </Text>
                                         </View>
+                                        <View>
+                                            <Text className="text-[13px] tracking-wider text-neutral-700 font-bold mb-2">{formatDate(item?.created_at)}</Text>
+                                        </View>
                                     </View>
-                                }
+                                    <View className="p-2">
+                                        <Text className="text-[15px] tracking-wider mb-5 text-neutral-700 text-justify font-semibold">
+                                            {defaultLanguage == "en" ? truncateText(item?.descriptionE, 20) : truncateText(item?.descriptionG, 20)}
+                                        </Text>
+                                    </View>
+                                </View> 
                             </View>
-                            <View className="flex flex-row justify-between flex-wrap items-center p-2">
-                                <View>
-                                    <Text className='font-bold text-[19px] text-black tracking-tighter text-justify my-2'>
-                                        {defaultLanguage == "en" ? item.titleE : item.titleG}
-                                    </Text>
-                                </View>
-                                <View>
-                                    <Text className="text-[13px] tracking-wider text-neutral-700 font-bold mb-2">{formatDate(item?.created_at)}</Text>
-                                </View>
-                            </View>
-                            <View className="p-2">
-                                <Text className="text-[15px] tracking-wider mb-5 text-neutral-700 text-justify font-semibold">
-                                    {defaultLanguage == "en" ? truncateText(item?.descriptionE, 20) : truncateText(item?.descriptionG, 20)}
-                                </Text>
-                            </View>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-            </Animated.View >
+                        </TouchableOpacity>
+                    </Animated.View >
+                    : <></>
+                }
+                {!item && (
+                    <NoDataFound message={"Currently, no news available"} />
+                )}
+
+            </>
         );
     };
 
@@ -137,15 +148,17 @@ function NewsList({ navigation, news, loading }) {
                     <View className={`px-5 py-5 ${Platform.OS == "android" ? 'mt-0' : "mt-0"}`}>
                         <Text className="text-2xl font-bold text-black">{t("news")}</Text>
                     </View>
-                    <View className="bg-[#E9EDF7] pb-12">
+
+                    <View className="bg-[#E9EDF7] w-full h-full pb-12 ">
                         <FlatList
                             ListHeaderComponent={() => news && renderItems({ item: news[0] })}
                             data={news && news.slice(1)}
                             renderItem={renderItems}
                             keyExtractor={(item) => item?._id}
-                            contentContainerStyle={{ paddingHorizontal: 12 }}
+                         
                             showsHorizontalScrollIndicator={false}
                             showsVerticalScrollIndicator={false}
+                            
                         />
                     </View>
                 </>
@@ -172,4 +185,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default NewsList;
+export default React.memo(NewsList);

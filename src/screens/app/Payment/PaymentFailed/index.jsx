@@ -24,7 +24,7 @@ function PaymentFailed({ navigation, route }) {
             <View className="relative h-full flex-1 px-5">
                 <View >
                     <Text className="tracking-wider marker:text-center my-3 text-3xl font-extrabold text-neutral-700">{t('paymentFailed')}</Text>
-                    <Text className="tracking-wider  mb-3 text-lg font-semibold text-neutral-700">{data?.description}</Text>
+                    <Text className="tracking-wider  mb-3 text-lg font-semibold text-neutral-700">{t("Failpaymentmessage")}</Text>
                 </View>
                 <View className="bg-white w-full rounded-[15px]" style={{ shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.3, shadowRadius: 4, elevation: 5 }}>
                     <View className="p-3">

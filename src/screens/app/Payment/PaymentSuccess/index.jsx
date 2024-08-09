@@ -28,7 +28,7 @@ function PaymentSuccess({ navigation, route }) {
                     <View className="flex-1 w-full px-5 mb-5">
                         <View >
                             <Text className="tracking-wider marker:text-center my-3 text-3xl font-extrabold text-neutral-700">{t('paymentSuccess')}</Text>
-                            <Text className="tracking-wider  mb-3 text-lg font-semibold text-neutral-700">{t('paymentSuccess')}{t('Successpaymentmessage')}</Text>
+                            <Text className="tracking-wider  mb-3 text-lg font-semibold text-neutral-700">{t('Successpaymentmessage')}</Text>
                         </View>
                         <View className="bg-white my-4 w-full p-3 rounded-[15px] " style={{ shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.3, shadowRadius: 4, elevation: 5 }}>
                             <View className="flex-row mb-3 items-center justify-between" >

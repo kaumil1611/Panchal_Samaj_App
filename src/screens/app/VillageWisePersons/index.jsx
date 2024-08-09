@@ -65,7 +65,6 @@ const VillageWisePersons = ({ navigation, route }) => {
                     }}>
                         <View className="w-full flex flex-row bg-white rounded-xl items-center px-3">
                             <TextInput placeholder={t("searchPersonVillage")} className="w-full text-black" placeholderTextColor="grey" value={search} onChangeText={text => setSearch(text)} />
-                            {/* <View className="h-full flex justify-center absolute right-[6px]"> */}
                             {search !== "" ? (
                                 <AnimatedFontistoIcon
                                     name="close"
@@ -79,7 +78,6 @@ const VillageWisePersons = ({ navigation, route }) => {
                                     color={"black"}
                                 />
                             )}
-                            {/* </View> */}
                         </View>
                     </TouchableOpacity>
                 </View>

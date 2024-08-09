@@ -31,7 +31,7 @@ const VillageByName = ({ searchValue, navigation, SelectedVillage }) => {
 
     const formattedContacts = userByVillageId.map(user => ({
         id: user._id,
-        image: process.env.IMAGE_URL + user?.photo,
+        image: user?.photo ? process.env.IMAGE_URL + user?.photo : '',
         name: `${user.firstname} ${user.middlename} ${user.lastname}`,
         city: user.city,
         village: SelectedVillage.villageE,
@@ -71,7 +71,7 @@ const VillageByName = ({ searchValue, navigation, SelectedVillage }) => {
                 />
             ) : (
                 filteredContacts.length === 0 ? (
-                    <NoDataFound message={"There are no person details in this village screen."} />
+                    <NoDataFound message={"Currently, no person details are available for this village."} />
                 ) : (
                     <FlatList
                         style={styles.container}
@@ -136,14 +136,22 @@ const VillageByName = ({ searchValue, navigation, SelectedVillage }) => {
                                                     onPress={() => viewImage(item.image)}
                                                     style={styles.imageContainer}
                                                 >
-                                                    <Image style={styles.image} source={{ uri: item.image }} />
+                                                    <Image
+                                                        source={
+                                                            item?.image && item.image !== "null"
+                                                                ? { uri: item.image }
+                                                                : require("../../assets/PanchalAPPLogo.jpg")
+                                                        }
+                                                        style={styles.image}
+                                                    />
                                                 </Pressable>
                                             </Animated.View>
                                             <View className="flex flex-1">
-                                                <Text className="text-lg font-bold ml-2">{item.name}</Text>
-                                                <Text className="capitalize text-base font-semibold ml-2">{item.city} - {item.village}</Text>
+                                                <Text className="text-lg text-black font-bold ml-2">{item.name}</Text>
+                                                <Text className="capitalize text-base text-black font-semibold ml-2">{item.city} - {item.village}</Text>
                                             </View>
                                         </View>
+
                                     </Pressable>
                                 </Animated.View>
                             );
@@ -152,7 +160,10 @@ const VillageByName = ({ searchValue, navigation, SelectedVillage }) => {
                 )
             )}
             <ImageViewing
-                images={[{ uri: image }]}
+                images={image
+                    ? [{ uri: image }]
+                    : [{ uri: Image.resolveAssetSource(require("../../assets/PanchalAPPLogo.jpg")).uri }]
+                }
                 imageIndex={0}
                 visible={isVisible}
                 onRequestClose={() => setIsVisible(false)}

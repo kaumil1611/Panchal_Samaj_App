@@ -170,9 +170,9 @@ const ProfilePage = ({ navigation }) => {
         }).start();
     };
 
-    const profileImage = [
-        { uri: `${process.env.IMAGE_URL}${allUserInfo?.photo}`, },
-    ];
+    const profileImage = allUserInfo?.photo
+        ? [{ uri: process.env.IMAGE_URL + allUserInfo.photo }]
+        : [{ uri: Image.resolveAssetSource(require("../../../assets/PanchalAPPLogo.jpg")).uri }];
 
     const bannerImages = [
         { uri: `${process.env.IMAGE_URL}${allUserInfo?.profile_banner}`, },
@@ -374,7 +374,15 @@ const ProfilePage = ({ navigation }) => {
                                 onPress={openModal}
                             >
                                 <View className="h-40 w-40 p-2 rounded-full bg-white">
-                                    <Image className="inline-block h-36 w-36 rounded-full ring-2 ring-white" source={{ uri: process.env.IMAGE_URL + allUserInfo?.photo ? process.env.IMAGE_URL + allUserInfo?.photo : 'https://eclatsuperior.com/wp-content/uploads/2021/04/man4.jpg' }} alt='profile-img' />
+                                    <Image
+                                        className="inline-block h-36 w-36 rounded-full ring-2 ring-white"
+                                        source={
+                                            allUserInfo?.photo
+                                                ? { uri: process.env.IMAGE_URL + allUserInfo.photo }
+                                                : require("../../../assets/PanchalAPPLogo.jpg")
+                                        }
+                                        alt="profile-img"
+                                    />
                                 </View>
                             </Pressable>
                         </Animated.View>
