@@ -1,9 +1,9 @@
-import {yupResolver} from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {t} from 'i18next';
-import {TextArea} from 'native-base';
-import React, {useContext, useEffect, useState} from 'react';
-import {Controller, useForm} from 'react-hook-form';
+import { t } from 'i18next';
+import { TextArea } from 'native-base';
+import React, { useContext, useEffect, useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import {
   ActivityIndicator,
   Image,
@@ -23,7 +23,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import * as yup from 'yup';
 import Button from '../../../components/Button';
 import ApiContext from '../../../context/ApiContext';
-import {GlobalContext} from '../../../context/globalState';
+import { GlobalContext } from '../../../context/globalState';
 import toastMessage from '../../../utils/toastMessage';
 
 const schema = yup.object().shape({
@@ -44,19 +44,19 @@ const schema = yup.object().shape({
   businessLogo: yup.mixed().required('Business logo is required'),
 });
 
-const AddBusinessDetails = ({route, navigation}) => {
+const AddBusinessDetails = ({ route, navigation }) => {
   const template = route.params;
   const {
     control,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
     setValue,
     watch,
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const {allUserInfo} = useContext(GlobalContext);
-  const {registerUserBusinessData} = useContext(ApiContext);
+  const { allUserInfo } = useContext(GlobalContext);
+  const { registerUserBusinessData } = useContext(ApiContext);
   const userId = allUserInfo._id;
   const [loading, setLoading] = useState(false);
   const [logo, setLogo] = useState(null);
@@ -112,19 +112,17 @@ const AddBusinessDetails = ({route, navigation}) => {
   };
 
   const pickImage = () => {
-    ImagePicker.launchImageLibrary({mediaType: 'photo'}, response => {
+    ImagePicker.launchImageLibrary({ mediaType: 'photo' }, response => {
       if (response.didCancel) {
         console.log('User cancelled image picker');
       } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
       } else {
         const source = response.assets[0];
-
-        // Check if the image has a 1:1 aspect ratio and is at least 200x200 pixels
         const aspectRatio = source.width / source.height;
         if (aspectRatio === 1 && source.width >= 200 && source.height >= 200) {
           setLogo(source);
-          setValue('businessLogo', source, {shouldValidate: true});
+          setValue('businessLogo', source, { shouldValidate: true });
         } else {
           alert(
             'Invalid Image',
@@ -134,25 +132,6 @@ const AddBusinessDetails = ({route, navigation}) => {
       }
     });
   };
-
-  /*     const pickImage = () => {
-            ImagePicker.launchImageLibrary({ mediaType: 'photo' }, response => {
-                if (response.didCancel) {
-                    console.log('User cancelled image picker');
-                } else if (response.error) {
-                    console.log('ImagePicker Error: ', response.error);
-                } else {
-                    const source = response.assets[0];
-                    // if (source.type === 'image/png') {
-                    console.log(source, ":::source")
-                    setLogo(source);
-                    setValue('businessLogo', source, { shouldValidate: true });
-                    //  } else {
-                        // alert('Only PNG files are allowed');
-                    // } 
-                }
-            });
-        }; */
 
   const onDateChange = (event, selectedDate) => {
     if (selectedDate !== undefined) {
@@ -164,7 +143,6 @@ const AddBusinessDetails = ({route, navigation}) => {
 
   useEffect(() => {
     if (Object.keys(errors).length > 0) {
-      // const errorMessage = Object.values(errors).map(error => error.message).join(', ');
       toastMessage('Please fill all the required fields');
     }
   }, [errors]);
@@ -188,7 +166,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Text className="font-extrabold text-base tracking-wider text-neutral-700">
                     Full Name:
                   </Text>
-                  <Text style={{color: 'red', fontSize: 17, height: 13}}>
+                  <Text style={{ color: 'red', fontSize: 17, height: 13 }}>
                     *
                   </Text>
                 </View>
@@ -196,7 +174,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="name"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextInput
                         style={styles.input}
                         placeholderTextColor="grey"
@@ -220,7 +198,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Text className="font-extrabold text-base tracking-wider text-neutral-700">
                     Company Name:
                   </Text>
-                  <Text style={{color: 'red', fontSize: 17, height: 13}}>
+                  <Text style={{ color: 'red', fontSize: 17, height: 13 }}>
                     *
                   </Text>
                 </View>
@@ -228,7 +206,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="businessName"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextInput
                         style={styles.input}
                         placeholder="Business Name"
@@ -253,7 +231,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Text className="font-extrabold text-base tracking-wider text-neutral-700">
                     Company Address:
                   </Text>
-                  <Text style={{color: 'red', fontSize: 17, height: 13}}>
+                  <Text style={{ color: 'red', fontSize: 17, height: 13 }}>
                     *
                   </Text>
                 </View>
@@ -262,7 +240,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="address"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextArea
                         style={styles.textArea}
                         placeholder="Address"
@@ -290,7 +268,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Text className="font-extrabold text-base tracking-wider text-neutral-700">
                     Business Email:
                   </Text>
-                  <Text style={{color: 'red', fontSize: 17, height: 13}}>
+                  <Text style={{ color: 'red', fontSize: 17, height: 13 }}>
                     *
                   </Text>
                 </View>
@@ -298,7 +276,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="businessEmail"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextInput
                         style={styles.input}
                         placeholder="Business Email"
@@ -323,7 +301,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Text className="font-extrabold text-base tracking-wider text-neutral-700">
                     Business Contact Number:
                   </Text>
-                  <Text style={{color: 'red', fontSize: 17, height: 13}}>
+                  <Text style={{ color: 'red', fontSize: 17, height: 13 }}>
                     *
                   </Text>
                 </View>
@@ -331,7 +309,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="businessContactNumber"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextInput
                         style={styles.input}
                         placeholder="Business Contact Number"
@@ -357,7 +335,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="phoneNumber2"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextInput
                         style={styles.input}
                         placeholder="Phone Number 2"
@@ -377,7 +355,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Text className="font-extrabold text-base tracking-wider text-neutral-700">
                     Business Logo:
                   </Text>
-                  <Text style={{color: 'red', fontSize: 17, height: 13}}>
+                  <Text style={{ color: 'red', fontSize: 17, height: 13 }}>
                     *
                   </Text>
                 </View>
@@ -385,7 +363,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   onPress={pickImage}
                   style={styles.logoContainer}>
                   {logo ? (
-                    <Image source={{uri: logo.uri}} style={styles.logo} />
+                    <Image source={{ uri: logo.uri }} style={styles.logo} />
                   ) : (
                     <Feather name="image" style={styles.icon} />
                   )}
@@ -402,7 +380,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Text className="font-extrabold text-base tracking-wider text-neutral-700">
                     Business Short Description:
                   </Text>
-                  <Text style={{color: 'red', fontSize: 17, height: 13}}>
+                  <Text style={{ color: 'red', fontSize: 17, height: 13 }}>
                     *
                   </Text>
                 </View>
@@ -410,7 +388,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="businessShortDetail"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextInput
                         style={styles.input}
                         placeholder="Business Short Detail"
@@ -440,7 +418,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="businessLongDetail"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextArea
                         style={styles.textArea}
                         placeholder="Business Long Detail"
@@ -468,7 +446,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="businessWebsite"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextInput
                         style={styles.input}
                         placeholder="Business Website"
@@ -493,7 +471,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="facebook"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextInput
                         style={styles.input}
                         placeholder="Facebook"
@@ -518,7 +496,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="instagram"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextInput
                         style={styles.input}
                         placeholder="Instagram"
@@ -543,7 +521,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="linkedIn"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextInput
                         style={styles.input}
                         placeholder="LinkedIn"
@@ -568,7 +546,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="twitter"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextInput
                         style={styles.input}
                         placeholder="Twitter"
@@ -588,7 +566,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Text className="font-extrabold text-base tracking-wider text-neutral-700">
                     Type Of Business:
                   </Text>
-                  <Text style={{color: 'red', fontSize: 17, height: 13}}>
+                  <Text style={{ color: 'red', fontSize: 17, height: 13 }}>
                     *
                   </Text>
                 </View>
@@ -596,7 +574,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="businessType"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextInput
                         style={styles.input}
                         placeholder="Business Type"
@@ -621,7 +599,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Text className="font-extrabold text-base tracking-wider text-neutral-700">
                     Business Role:
                   </Text>
-                  <Text style={{color: 'red', fontSize: 17, height: 13}}>
+                  <Text style={{ color: 'red', fontSize: 17, height: 13 }}>
                     *
                   </Text>
                 </View>
@@ -629,7 +607,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Controller
                     control={control}
                     name="role"
-                    render={({field: {onChange, onBlur, value}}) => (
+                    render={({ field: { onChange, onBlur, value } }) => (
                       <TextInput
                         style={styles.input}
                         placeholder="Role"
@@ -652,7 +630,7 @@ const AddBusinessDetails = ({route, navigation}) => {
                   <Text className="font-extrabold ml-1 text-base tracking-wider text-neutral-700">
                     Date of Opening of Job:
                   </Text>
-                  <Text style={{color: 'red', fontSize: 17, height: 13}}>
+                  <Text style={{ color: 'red', fontSize: 17, height: 13 }}>
                     *
                   </Text>
                 </View>
@@ -710,7 +688,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     marginBottom: 7,
     shadowColor: '#423f40',
-    shadowOffset: {width: 0, height: 1},
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.3,
     shadowRadius: 0.2,
     marginHorizontal: 4,
@@ -721,7 +699,7 @@ const styles = StyleSheet.create({
     color: '#333',
 
     shadowColor: '#423f40',
-    shadowOffset: {width: 0, height: 1},
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.3,
     shadowRadius: 0.2,
     marginHorizontal: 0,
