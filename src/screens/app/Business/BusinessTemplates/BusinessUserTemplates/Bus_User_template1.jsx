@@ -316,7 +316,7 @@ const Bus_User_template1 = ({ route }) => {
 
                         <View className="flex flex-row justify-center gap-2">
                             <Text className="text-black font-semibold">
-                                Created by :-
+                                Create at:-
                             </Text>
                             <Text className="text-black font-semibold">
                                 {formatDate(templateOneDetails?.dateOfOpeningJob)}
