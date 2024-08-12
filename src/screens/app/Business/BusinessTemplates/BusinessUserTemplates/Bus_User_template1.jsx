@@ -259,58 +259,61 @@ const Bus_User_template1 = ({ route }) => {
                                 </View>
                             )}
 
-                            {(faceBookLink || linkedinLink || instagramLink || twitterLink) && (
-                                <View className="flex flex-row justify-around items-center mt-5 mb-3">
-                                    {faceBookLink && (
-                                        <TouchableOpacity
-                                            activeOpacity={1}
-                                            onPressIn={onPressInFaceBook}
-                                            onPressOut={onPressOutFaceBook}
-                                            onPress={() => openLink(faceBookLink)}
-                                        >
-                                            <Animated.View style={[{ transform: [{ scale: faceBookScale }] }]}>
-                                                <AnimatedFontistoIcon name="facebook" size={25} color="#0866ff" />
-                                            </Animated.View>
-                                        </TouchableOpacity>
-                                    )}
-                                    {linkedinLink && (
-                                        <TouchableOpacity
-                                            activeOpacity={1}
-                                            onPressIn={onPressInLinkedin}
-                                            onPressOut={onPressOutLinkedin}
-                                            onPress={() => openLink(linkedinLink)}
-                                        >
-                                            <Animated.View style={[{ transform: [{ scale: linkedinScale }] }]}>
-                                                <AnimatedFontistoIcon name="linkedin" size={25} color="#0866ff" />
-                                            </Animated.View>
-                                        </TouchableOpacity>
-                                    )}
-                                    {instagramLink && (
-                                        <TouchableOpacity
-                                            activeOpacity={1}
-                                            onPressIn={onPressInInsta}
-                                            onPressOut={onPressOutInsta}
-                                            onPress={() => openLink(instagramLink)}
-                                        >
-                                            <Animated.View style={[{ transform: [{ scale: instaScale }] }]}>
-                                                <AnimatedFontistoIcon name="instagram" size={25} color="#f700b2" />
-                                            </Animated.View>
-                                        </TouchableOpacity>
-                                    )}
-                                    {twitterLink && (
-                                        <TouchableOpacity
-                                            activeOpacity={1}
-                                            onPressIn={onPressInTwitter}
-                                            onPressOut={onPressOutTwitter}
-                                            onPress={() => openLink(twitterLink)}
-                                        >
-                                            <Animated.View style={[{ transform: [{ scale: twitterScale }] }]}>
-                                                <TwitterIcon width={25} height={25} color='red' />
-                                            </Animated.View>
-                                        </TouchableOpacity>
-                                    )}
-                                </View>
-                            )}
+
+                            <View className="flex flex-row justify-around items-center mt-5 mb-3">
+                                {(faceBookLink || linkedinLink || instagramLink || twitterLink) && (
+                                    <View className="flex flex-row gap-4">
+                                        {faceBookLink && (
+                                            <TouchableOpacity
+                                                activeOpacity={1}
+                                                onPressIn={onPressInFaceBook}
+                                                onPressOut={onPressOutFaceBook}
+                                                onPress={() => openLink(faceBookLink)}
+                                            >
+                                                <Animated.View style={[{ transform: [{ scale: faceBookScale }] }]}>
+                                                    <AnimatedFontistoIcon name="facebook" size={25} color="#0866ff" />
+                                                </Animated.View>
+                                            </TouchableOpacity>
+                                        )}
+                                        {linkedinLink && (
+                                            <TouchableOpacity
+                                                activeOpacity={1}
+                                                onPressIn={onPressInLinkedin}
+                                                onPressOut={onPressOutLinkedin}
+                                                onPress={() => openLink(linkedinLink)}
+                                            >
+                                                <Animated.View style={[{ transform: [{ scale: linkedinScale }] }]}>
+                                                    <AnimatedFontistoIcon name="linkedin" size={25} color="#0866ff" />
+                                                </Animated.View>
+                                            </TouchableOpacity>
+                                        )}
+                                        {instagramLink && (
+                                            <TouchableOpacity
+                                                activeOpacity={1}
+                                                onPressIn={onPressInInsta}
+                                                onPressOut={onPressOutInsta}
+                                                onPress={() => openLink(instagramLink)}
+                                            >
+                                                <Animated.View style={[{ transform: [{ scale: instaScale }] }]}>
+                                                    <AnimatedFontistoIcon name="instagram" size={25} color="#f700b2" />
+                                                </Animated.View>
+                                            </TouchableOpacity>
+                                        )}
+                                        {twitterLink && (
+                                            <TouchableOpacity
+                                                activeOpacity={1}
+                                                onPressIn={onPressInTwitter}
+                                                onPressOut={onPressOutTwitter}
+                                                onPress={() => openLink(twitterLink)}
+                                            >
+                                                <Animated.View style={[{ transform: [{ scale: twitterScale }] }]}>
+                                                    <TwitterIcon width={25} height={25} color='red' />
+                                                </Animated.View>
+                                            </TouchableOpacity>
+                                        )}
+                                    </View>
+                                )}
+                            </View>
                         </View>
 
 

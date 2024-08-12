@@ -248,6 +248,7 @@ const Template1 = () => {
                             </TouchableOpacity>
 
                         </View>
+
                     </View>
                 </View>
             </ScrollView>

@@ -107,7 +107,7 @@ const RootNavigator = () => {
                 <RootStack.Screen name="NodeDetails" component={NodeDetails} options={{ headerTitle: t("familyDetailsPage") }} />
                 <RootStack.Screen name="AddFamilyDetail" component={AddFamilyDetails} options={{ headerTitle: t("AddFamilyDetails") }} />
                 <RootStack.Screen name="EditUserFamilyDetails" component={EditUserFamilyDetails} options={{ headerTitle: t("EditFamilyDetails") }} />
-                <RootStack.Screen name="AllUserDirectory" component={AllUserDirectory} options={{ headerTitle: "Directory" }} />
+                <RootStack.Screen name="AllUserDirectory" component={AllUserDirectory} options={{ headerTitle: t("directory") }} />
                 <RootStack.Screen name="EventsScreen" component={EventsScreen} options={{ headerTitle: t("AllEvents") }} />
                 <RootStack.Screen name="BusinessScreen" component={BusinessListing} options={{ headerTitle: t("Business") }} />
                 <RootStack.Screen name="MyBusinessCardScreen" component={MyBusinessCards} options={{ headerTitle: t("My Business") }} />

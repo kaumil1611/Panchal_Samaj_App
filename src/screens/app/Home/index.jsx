@@ -39,7 +39,7 @@ const Home = ({ navigation }) => {
         { id: 2, name: t('villages'), redirectTo: "VillageListing", image: require('../../../assets/villageIcon.png') },
         isLoggedIn ? { id: 3, name: t('profile'), redirectTo: "Profile", image: require('../../../assets/prifileImage.png') }
             : { id: 4, name: t('joinnow'), redirectTo: "Welcome", image: require('../../../assets/join.png') },
-        { id: 5, name: t('Directory'), redirectTo: "AllUserDirectory", image: require('../../../assets/directory.png') },
+        { id: 5, name: t('directory'), redirectTo: "AllUserDirectory", image: require('../../../assets/directory.png') },
         isLoggedIn ? { id: 6, name: t("Business"), redirectTo: "BusinessScreen", image: require('../../../assets/events.png') }
             : { id: "", name: "", redirectTo: "", image: "" },
         { id: "", name: "", redirectTo: "", image: "" },

@@ -81,7 +81,7 @@ function EmailSupport({ navigation }) {
                                 <View className="my-1">
                                     <View className="flex flex-row w-full">
                                         <Text className="font-extrabold ml-1 text-base tracking-wider text-neutral-700">{t('email')}:</Text>
-                                        <Text className="text-red-600 text-[17px] ml-1">*</Text>
+                                        <Text className="text-red-600 text-[17px]">*</Text>
                                     </View>
 
                                     <View className="w-full">
