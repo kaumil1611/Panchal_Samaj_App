@@ -18,18 +18,14 @@ import { GlobalContext } from '../../../context/globalState';
 
 const BusinessPaymentLifeTimePage = ({ route, navigation }) => {
 
-
-
     const orderData = route.params?.response?.order;
     console.log(orderData, " ::: orderData");
     const inputRange = [0, 1];
     const outputRange = [1, 0.8];
     const { registerData } = useContext(GlobalContext);
     const { activeBusinessData } = useContext(ApiContext);
-
     const responseOfData = route.params?.response?.businessData;
     const razorpayData = route.params?.response;
-
     const animation = useMemo(() => new Animated.Value(0), []);
     const [loading, setLoading] = useState("");
     const scale = animation.interpolate({ inputRange, outputRange });

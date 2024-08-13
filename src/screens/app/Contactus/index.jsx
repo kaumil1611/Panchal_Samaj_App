@@ -1,5 +1,5 @@
 import { ScrollView } from 'native-base';
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Animated, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import ContactUsCard from '../../../components/ContactUsCard';
@@ -7,7 +7,6 @@ import ContactUsCard from '../../../components/ContactUsCard';
 function ContactUs({ navigation }) {
 
     const { t } = useTranslation();
-    const [highlight, setHighlight] = useState(false);
     const animation = new Animated.Value(0);
     const inputRange = [0, 1];
     const outputRange = [1, 0.8];
@@ -27,13 +26,6 @@ function ContactUs({ navigation }) {
         }).start();
     };
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setHighlight(prev => !prev);
-        }, 1000);
-        return () => clearInterval(interval);
-    }, []);
-
     return (
         <View className="flex-1 bg-[#E9EDF7] space-y-5 w-full">
             <View className="bg-white p-3">
@@ -49,8 +41,8 @@ function ContactUs({ navigation }) {
                             onPressOut={onPressOut}
                             onPress={() => navigation.navigate("Support")}
                         >
-                            <View className={`p-[3px] rounded-full ${highlight ? 'bg-red-400' : 'bg-black'}`} >
-                                <View className={`rounded-full flex-row justify-center items-center ${highlight ? 'bg-blue-200' : 'bg-[#E9EDF7]'}`} >
+                            <View className="p-[3px] rounded-full bg-blue-300 border-2 border-blue-800">
+                                <View className="rounded-full flex-row justify-center items-center">
                                     <View className="m-3">
                                         <Image className="w-[40px] h-[40px]" source={require('../../../assets/support.png')} />
                                     </View>
@@ -61,16 +53,16 @@ function ContactUs({ navigation }) {
                     </Animated.View>
                 </View>
             </View>
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ flex: 1 }} showsVerticalScrollIndicator={false}
-                showsHorizontalScrollIndicator={false} >
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ flex: 1 }} showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
                 <View className="bg-white p-2 mr-2 rounded-lg mx-4 flex-1 justify-around" style={styles.shadowOfCard}>
-                    <Text className="tracking-wider text-neutral-700 text-justify">{t('contactusheading')}</Text>
+                    <Text className="tracking-wider text-neutral-700 text-justify">
+                        {t('contactusheading')}
+                    </Text>
                 </View>
                 <ContactUsCard />
             </ScrollView>
         </View>
-
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -82,8 +74,8 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.17,
         shadowRadius: 3.05,
-        elevation: 4
+        elevation: 4,
     },
 });
 
-export default ContactUs;
+export default React.memo(ContactUs);

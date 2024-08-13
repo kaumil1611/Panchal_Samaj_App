@@ -20,7 +20,6 @@ const BusinessListing = ({ navigation }) => {
         const fetchBusinessListing = async () => {
             try {
                 const contentBusinessListing = await allUsersBussinessListing();
-                console.log(contentBusinessListing.businesses, ":::contentBusinessListing.businesses")
                 setBusinessListing(contentBusinessListing.businesses || []);
             } catch (error) {
                 console.log("Error fetching business listing:", error);

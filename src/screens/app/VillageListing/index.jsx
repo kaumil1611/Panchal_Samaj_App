@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, KeyboardAvoidingView, Platform, Text, TouchableOpacity, View } from 'react-native';
 import { FlatList, TextInput } from 'react-native-gesture-handler';
@@ -14,6 +14,7 @@ import { GlobalContext } from '../../../context/globalState';
 import i18n from '../../../context/i18n';
 
 const VillageListing = ({ navigation, route }) => {
+
     const { t } = useTranslation();
     const [search, setSearch] = useState("");
     const [language, setLanguage] = useState("");
@@ -95,7 +96,7 @@ const VillageListing = ({ navigation, route }) => {
     const handleVillageSelect = useCallback(async (item) => {
         await setSelectedVillage(item);
         navigation.navigate('VillageWisePersons', { villageId: item._id });
-    }, [navigation, setSelectedVillage]);
+    }, []);
 
     const renderItem = useCallback(({ item }) => {
         const villageImage = process.env.IMAGE_URL + item.image;
@@ -201,4 +202,4 @@ const VillageListing = ({ navigation, route }) => {
     );
 };
 
-export default VillageListing;
+export default React.memo(VillageListing);

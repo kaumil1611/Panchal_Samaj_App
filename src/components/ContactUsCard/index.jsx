@@ -153,7 +153,7 @@ function ContactUsCard() {
             }
             setLoading(false);
         })();
-    }, [contactUsPageDetails]);
+    }, []);
 
     const openLink = (url) => {
         if (url) {
