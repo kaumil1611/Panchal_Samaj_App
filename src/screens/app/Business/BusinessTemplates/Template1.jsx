@@ -249,6 +249,15 @@ const Template1 = () => {
 
                         </View>
 
+                        <View className="flex flex-row justify-center gap-2">
+                            <Text className="text-black font-semibold">
+                                Created at:-
+                            </Text>
+                            <Text className="text-black font-semibold">
+                                {formatDate(templateOneDetails?.dateOfOpeningJob)}
+                            </Text>
+                        </View>
+
                     </View>
                 </View>
             </ScrollView>
