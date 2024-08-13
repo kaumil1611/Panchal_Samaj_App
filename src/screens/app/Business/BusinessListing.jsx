@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import {
     Animated,
     FlatList,
@@ -13,35 +13,41 @@ import ApiContext from '../../../context/ApiContext';
 import { getTemplateById } from '../../../utils/BusinessUtils';
 
 const BusinessListing = ({ navigation }) => {
-
     const { allUsersBussinessListing } = useContext(ApiContext);
     const [businessListing, setBusinessListing] = useState([]);
 
     useEffect(() => {
-        (async function () {
+        const fetchBusinessListing = async () => {
             try {
                 const contentBusinessListing = await allUsersBussinessListing();
+                console.log(contentBusinessListing.businesses, ":::contentBusinessListing.businesses")
                 setBusinessListing(contentBusinessListing.businesses || []);
             } catch (error) {
-                console.log("error", error);
+                console.log("Error fetching business listing:", error);
             }
-        })();
+        };
+
+        fetchBusinessListing();
     }, []);
 
-    const handleCallOpenLink = (phoneNumber) => {
+    const handleCallOpenLink = useCallback((phoneNumber) => {
         if (phoneNumber) {
             Linking.openURL(`tel:${phoneNumber}`);
         }
-    };
+    }, []);
 
-    const handleClickOnMail = (mail) => {
+    const handleClickOnMail = useCallback((mail) => {
         if (mail) {
             Linking.openURL(`mailto:${mail}`);
         }
-    };
+    }, []);
 
-    const renderItem = ({ item, index }) => {
-        //   const backgroundColor = { bg1: '#0056b3', bg2: '#b5d9f0' };
+    const handleOpenCardOfBusiness = useCallback((item) => {
+        const selectedTemplate = getTemplateById(item.template_id);
+        navigation.navigate(selectedTemplate?.user_templ, { item });
+    }, [navigation]);
+
+    const renderItem = useCallback(({ item, index }) => {
         const backgroundColor = index % 2 === 0 ? { bg1: '#5846DC', bg2: '#267E91' } : { bg1: '#CA5202', bg2: '#E0AD72' };
         const animation = new Animated.Value(0);
         const inputRange = [0, 1];
@@ -61,10 +67,6 @@ const BusinessListing = ({ navigation }) => {
                 useNativeDriver: true,
             }).start();
         };
-        const handleOpenCardOfBusiness = () => {
-            const selectedTemplate = getTemplateById(item.template_id);
-            navigation.navigate(selectedTemplate?.user_templ, { item });
-        }
 
         return (
             <View className="p-3">
@@ -73,7 +75,7 @@ const BusinessListing = ({ navigation }) => {
                         activeOpacity={1}
                         onPressIn={onPressIn}
                         onPressOut={onPressOut}
-                        onPress={() => handleOpenCardOfBusiness(item.images)}
+                        onPress={() => handleOpenCardOfBusiness(item)}
                     >
                         <LinearGradient
                             colors={[backgroundColor.bg1, backgroundColor.bg2]}
@@ -88,15 +90,12 @@ const BusinessListing = ({ navigation }) => {
                             </View>
 
                             <View className="bg-white p-4">
-
                                 <View className="flex flex-row flex-wrap items-center">
                                     <Text className="text-black text-lg font-bold">Mobile Number : </Text>
                                     <TouchableOpacity onPress={() => handleCallOpenLink(item.businessContactNumber)}>
                                         <Text className="text-[#5176df] tracking-wider text-md font-medium">{item.businessContactNumber}</Text>
                                     </TouchableOpacity>
-                                    {item.phoneNumber2 &&
-                                        <Text> , </Text>
-                                    }
+                                    {item.phoneNumber2 && <Text>, </Text>}
                                     <TouchableOpacity onPress={() => handleCallOpenLink(item.phoneNumber2)}>
                                         <Text className="text-[#5176df] tracking-wider text-md font-medium">{item.phoneNumber2}</Text>
                                     </TouchableOpacity>
@@ -112,21 +111,21 @@ const BusinessListing = ({ navigation }) => {
                                     </TouchableOpacity>
                                 </View>
 
-                                {item.businessWebsite &&
+                                {item.businessWebsite && (
                                     <View className="flex flex-row flex-wrap items-center">
                                         <Text className="text-black text-lg font-bold">Website Link : </Text>
                                         <TouchableOpacity onPress={() => handleClickOnMail(item.businessWebsite)}>
                                             <Text className="text-[#5176df] tracking-wider text-md font-medium">{item.businessWebsite}</Text>
                                         </TouchableOpacity>
                                     </View>
-                                }
+                                )}
                             </View>
                         </LinearGradient>
                     </TouchableOpacity>
                 </Animated.View>
             </View>
         );
-    };
+    }, [handleCallOpenLink, handleClickOnMail, handleOpenCardOfBusiness]);
 
     return (
         <View className="bg-[#E9EDF7] h-full">
@@ -145,4 +144,4 @@ const BusinessListing = ({ navigation }) => {
     );
 };
 
-export default BusinessListing;
+export default React.memo(BusinessListing);
