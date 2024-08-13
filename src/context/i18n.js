@@ -87,7 +87,7 @@ const resources = {
       pleaseenterfirstname: 'Please enter firstname',
       pleaseenterlastname: 'Please enter lastname',
       pleaseentermiddlename: 'Please enter middlename',
-      pleaseenteremail: 'Please Enter Email',
+      pleaseenteremail: 'Please enter email',
       stepEnterEmail: 'First enter your email',
       stepEnterOTP: 'Enter the OTP sent to your email',
       pleaseentersubject: 'Please enter subject',
