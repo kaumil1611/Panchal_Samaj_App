@@ -187,7 +187,7 @@ const Bus_User_template1 = ({ route }) => {
 
                             <View className="flex flex-row items-center flex-wrap mb-2">
 
-                                <Text className="text-black text-base font-bold tracking-wide">Mobile Number : </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Mobile Number: </Text>
 
                                 <TouchableOpacity onPress={() => handleCallOpenLink("+91" + templateOneDetails?.businessContactNumber)}>
                                     <View>
@@ -213,7 +213,7 @@ const Bus_User_template1 = ({ route }) => {
                             </View>
 
                             <View className="flex flex-row items-center flex-wrap mb-2">
-                                <Text className="text-black text-base font-bold tracking-wide">Address : </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Address: </Text>
                                 <TouchableOpacity
                                     className="ms-2"
                                     onPress={() => Linking.openURL('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(templateOneDetails?.address))}
@@ -223,7 +223,7 @@ const Bus_User_template1 = ({ route }) => {
                             </View>
 
                             <View className="flex flex-row items-center flex-wrap mb-2">
-                                <Text className="text-black text-base font-bold tracking-wide">Company Email : </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Company Email: </Text>
                                 <TouchableOpacity onPress={() => handleClickOnMail(templateOneDetails?.businessEmail)}>
                                     <Text className="text-[#5176df] text-md font-medium">{templateOneDetails?.businessEmail}</Text>
                                 </TouchableOpacity>
@@ -231,7 +231,7 @@ const Bus_User_template1 = ({ route }) => {
 
                             {templateOneDetails?.businessWebsite && (
                                 <View className="flex flex-row items-center flex-wrap mb-2">
-                                    <Text className="text-black text-base font-bold tracking-wide">Website : </Text>
+                                    <Text className="text-black text-base font-bold tracking-wide">Website: </Text>
                                     <TouchableOpacity onPress={handlePress}>
                                         <Text className="text-[#5176df] text-sm font-semibold">{templateOneDetails?.businessWebsite}</Text>
                                     </TouchableOpacity>
@@ -239,13 +239,13 @@ const Bus_User_template1 = ({ route }) => {
                             )}
 
                             <View className="flex flex-row items-center flex-wrap mb-2">
-                                <Text className="text-black text-base font-bold tracking-wide">Short Description : </Text>
+                                <Text className="text-black text-base font-bold tracking-wide">Short Description: </Text>
                                 <Text className="text-black text-sm text-justify">{templateOneDetails?.businessShortDetail}</Text>
                             </View>
 
                             {templateOneDetails?.businessLongDetail && (
                                 <View className="flex flex-row items-center flex-wrap mb-2">
-                                    <Text className="text-black text-base font-bold tracking-wide">Long description : </Text>
+                                    <Text className="text-black text-base font-bold tracking-wide">Long description: </Text>
                                     <Text className="text-black text-sm text-justify">{templateOneDetails?.businessLongDetail}</Text>
                                 </View>
                             )}

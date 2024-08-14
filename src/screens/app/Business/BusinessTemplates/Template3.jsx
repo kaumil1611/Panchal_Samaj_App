@@ -58,39 +58,39 @@ const Template3 = () => {
             <View className="m-3">
 
                 <View className="flex flex-1 w-[100%] flex-col gap-3 flex-wrap py-1 border-b-[1px] border-gray-300">
-                    <Text className="font-bold text-black text-base">Company Name :</Text>
+                    <Text className="font-bold text-black text-base">Company Name:</Text>
                     <Text className="font-semibold text-sm text-left w-[100%] text-black">Codecrew Infotech pvt.</Text>
                 </View>
 
                 <View className="flex flex-1 w-[100%] flex-col gap-3 flex-wrap py-1 border-b-[1px] border-gray-300">
-                    <Text className="font-bold text-black text-base">Mobile Number :</Text>
+                    <Text className="font-bold text-black text-base">Mobile Number:</Text>
                     <Text className="font-semibold text-sm text-left w-[100%] text-blue-500">9425710736, 9875469232</Text>
                 </View>
 
                 <View className="flex flex-1 w-[100%] flex-col gap-3 flex-wrap py-1 border-b-[1px] border-gray-300">
-                    <Text className="font-bold text-black text-base">Address :</Text>
+                    <Text className="font-bold text-black text-base">Address:</Text>
                     <Text className="font-semibold text-sm text-left w-[100%] text-blue-500">A-29 Akash Society vastral, Ahmedabad</Text>
                 </View>
 
                 <View className="flex flex-1 w-[100%] flex-col gap-3 flex-wrap py-1 border-b-[1px] border-gray-300">
-                    <Text className="font-bold text-black text-base">Email :</Text>
+                    <Text className="font-bold text-black text-base">Email:</Text>
                     <Text className="font-semibold text-sm text-left w-[100%] text-blue-500">ccinfotech@gmail.com</Text>
                 </View>
 
                 <View className="flex flex-1 w-[100%] flex-col gap-3 flex-wrap py-1 border-b-[1px] border-gray-300">
-                    <Text className="font-bold text-black text-base">Website :</Text>
+                    <Text className="font-bold text-black text-base">Website:</Text>
                     <Text className="font-semibold text-sm text-left w-[100%] text-blue-500">http://127.0.0.1:5500/Panchal-samaj/index.html/</Text>
                 </View>
 
                 <View className="flex flex-1 w-[100%] flex-col gap-3 flex-wrap py-1 border-b-[1px] border-gray-300">
-                    <Text className="font-bold text-black text-base">Short Description :</Text>
+                    <Text className="font-bold text-black text-base">Short Description:</Text>
                     <Text className="font-semibold text-sm text-left w-[100%] text-black">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa fuga iusto laudantium excepturi sit.
                     </Text>
                 </View>
 
                 <View className="flex flex-1 w-[100%] flex-col gap-3 flex-wrap py-1 border-b-[1px] border-gray-300">
-                    <Text className="font-bold text-black text-base">Long Description :</Text>
+                    <Text className="font-bold text-black text-base">Long Description:</Text>
                     <Text className="font-semibold text-sm text-left w-[100%] text-black">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias autem ipsam deserunt minima soluta obcaecati ullam ut fuga impedit temporibus, incidunt sit iste cumque
                     </Text>
