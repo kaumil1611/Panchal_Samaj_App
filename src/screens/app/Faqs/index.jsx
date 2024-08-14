@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, Image, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Dimensions, Image, Text, TouchableOpacity, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -18,6 +18,8 @@ const Faqs = () => {
     const { defaultLanguage } = useContext(GlobalContext);
     const [faqs, setFaq] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [windowWidth] = useState(Dimensions.get('window').height);
+    console.log("heisghtththt", windowWidth)
 
     useEffect(() => {
         const fetchCommitteeMembers = async () => {
@@ -91,11 +93,11 @@ const Faqs = () => {
     };
 
     return (
-        <SafeAreaView className="flex-1 bg-white p-3">
-            <View className="w-full h-full bg-[#F7F7FA] rounded-[10px] overflow-hidden">
+        <View className="bg-white p-3">
+            <View className="w-full h-full bg-[#F7F7FA] rounded-[10px] ">
                 <View className="w-full h-40 bg-[#E9EDF7] flex flex-row ">
                     <View className="basis-[35%] flex flex-row justify-center items-center">
-                        <Image className="w-[60px] h-[100px] object-cover" source={{ uri: `${process.env.IMAGE_URL}${faqsImage}` }} />
+                        <Image className="w-[60px] h-[80px] object-cover" source={{ uri: `${process.env.IMAGE_URL}${faqsImage}` }} />
                     </View>
                     <View className="basis-[65%] flex flex-row justify-center items-center">
                         <Text className="font-extrabold tracking-wider text-2xl text-rose-700">
@@ -120,7 +122,7 @@ const Faqs = () => {
                     {!loading && !faqs.length && <NoDataFound message={"There are no FAQs in this village."} />}
                 </View>
             </View>
-        </SafeAreaView>
+        </View>
     )
 }
 
