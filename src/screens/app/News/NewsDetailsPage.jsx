@@ -121,7 +121,7 @@ const NewsDetailsPage = ({ route }) => {
                                     <View className=" bg-gray-300 absolute bottom-0 px-3">
                                         <View className="flex flex-row items-center gap-2">
                                             <Text className="font-bold text-base text-black">
-                                                Create By
+                                                Created by
                                             </Text>
                                             <Text className="text-base font-medium text-black capitalize">
                                                 {newsAddPerson}

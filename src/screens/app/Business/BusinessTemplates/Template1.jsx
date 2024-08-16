@@ -217,7 +217,7 @@ const Template1 = () => {
                         </View>
 
                         <View className="flex flex-row justify-center gap-2 mt-1">
-                            <Text className="text-black font-semibold">Created at:</Text>
+                            <Text className="text-black font-semibold">Business Opening Date:</Text>
                             <Text className="text-black text-sm text-justify">21/03/2002</Text>
                         </View>
 

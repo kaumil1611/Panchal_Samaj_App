@@ -323,7 +323,7 @@ const Bus_User_template3 = ({ route }) => {
             </View>
 
             <View>
-                <Text className="text-center text-sm font-bold text-gray-400 mt-3">Created at {formatDate(item?.dateOfOpeningJob)}</Text>
+                <Text className="text-center text-sm font-bold text-gray-400 mt-3">Business Opening Date {formatDate(item?.dateOfOpeningJob)}</Text>
             </View>
 
             <ImageViewing

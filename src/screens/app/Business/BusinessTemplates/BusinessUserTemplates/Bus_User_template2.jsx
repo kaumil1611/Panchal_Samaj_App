@@ -302,7 +302,7 @@ const Bus_User_template2 = ({ route }) => {
                 }
 
                 <View className="flex flex-row items-center flex-wrap mb-2">
-                    <Text className="text-black text-base font-bold tracking-wide">Created at: </Text>
+                    <Text className="text-black text-base font-bold tracking-wide">Business Opening Date: </Text>
                     <Text className="text-black text-sm text-justify">{formatDate(item?.dateOfOpeningJob)}</Text>
                 </View>
 
