@@ -103,7 +103,7 @@ const Template3 = () => {
             </View>
 
             <View>
-                <Text className="text-center text-sm text-gray-400 mt-3">Created by 18 July2024</Text>
+                <Text className="text-center text-sm text-gray-400 mt-3">Created at: 18/07/2024</Text>
             </View>
 
         </ScrollView>

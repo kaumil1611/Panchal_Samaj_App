@@ -58,7 +58,7 @@ function EmailSupport({ navigation }) {
                     <View className="flex-1 w-full bg-white space-y-5 p-3" edges={['top']}>
                         <View className="w-full flex-1 h-full bg-[#F7F7FA] rounded-[10px] overflow-hidden">
 
-                            <View className="w-full h-36 bg-[#E9EDF7] flex flex-row ">
+                            <View className="w-full h-36 bg-[#E9EDF7] flex flex-row">
                                 <View className="basis-[35%] flex flex-row justify-center items-center">
                                     <Image className="w-[80px] h-[80px] object-cover" source={{ uri: `${process.env.IMAGE_URL}${emailSupportImage}` }} />
                                 </View>
