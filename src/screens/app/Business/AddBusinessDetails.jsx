@@ -125,7 +125,6 @@ const AddBusinessDetails = ({ route, navigation }) => {
           setValue('businessLogo', source, { shouldValidate: true });
         } else {
           alert(
-            'Invalid Image',
             'Please upload an image with a 1:1 aspect ratio and a minimum size of 200x200 pixels.',
           );
         }
