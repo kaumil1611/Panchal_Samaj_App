@@ -30,10 +30,10 @@ const schema = yup.object().shape({
     role: yup.string(),
     address: yup.string().required('Address is required'),
     businessEmail: yup
-  .string()
-  .email('Invalid business email')
-  .transform(value => (value ? value.toLowerCase() : ''))
-  .required('Business email is required'),
+        .string()
+        .email('Invalid business email')
+        .transform(value => (value ? value.toLowerCase() : ''))
+        .required('Business email is required'),
     businessContactNumber: yup.string(),
     businessShortDetail: yup.string().required('Business short detail is required'),
     businessType: yup.string().required('Business type is required'),
@@ -68,7 +68,7 @@ const EditBusinessDetails = ({ route, navigation }) => {
                     setPngImage(source.uri);
                     setValue('businessLogo', source, { shouldValidate: true });
                 } else {
-                    alert('Invalid Image', 'Please upload an image with a 1:1 aspect ratio and a minimum size of 200x200 pixels.');
+                    alert('Please upload an image with a 1:1 aspect ratio and a minimum size of 200x200 pixels.');
                 }
             }
         });
