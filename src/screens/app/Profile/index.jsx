@@ -205,15 +205,20 @@ const ProfilePage = ({ navigation }) => {
         if (!timestamp) {
             return 'Invalid date';
         }
-        const date = new Date(Number(timestamp));
-        if (isNaN(date)) {
+        const date = new Date(timestamp); // No need to convert to Number
+        console.log(timestamp, ":::date");
+
+        if (isNaN(date.getTime())) {
             return 'Invalid date';
         }
+
         const day = date.getDate().toString().padStart(2, '0');
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
         const year = date.getFullYear().toString().slice(-2);
+
         return `${day}/${month}/${year}`;
     };
+
 
     const openModal = () => {
         setIsPopupVisible(true);
@@ -336,7 +341,7 @@ const ProfilePage = ({ navigation }) => {
             alert(error.message);
         }
     };
-
+    console.log(allUserInfo?.created_at, ":::allUserInfo?.created_at")
     return (
         <>
             <View className="flex-1 bg-white space-y-5 w-full pb-20" edges={['top']}>

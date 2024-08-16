@@ -165,7 +165,7 @@ const NodeDetails = ({ navigation, route }) => {
         const id = paramsData?.paramsId;
         const userId = allUserInfo?._id;
         function renderPressable() {
-
+            console.log("userData?.relationship", userData)
             return (
                 <>
                     {allUserInfo?._id == userData?._id ? null :
@@ -179,7 +179,7 @@ const NodeDetails = ({ navigation, route }) => {
                             </Pressable>
                         )
                     }
-                    {userData?.marital_status !== "unmarried" &&
+                    {(userData?.relationship == null || (userData?.marital_status !== "unmarried" && userData?.relationship !== "Wife")) &&
                         <Pressable onPress={handleAddFamilyDetail} className="p-1 bg-white absolute top-2 rounded-[15px] left-2 shadow-green-600" style={{ elevation: 7 }}>
                             <Text className="tracking-wider font-semibold text-[15px] text-neutral-700">
                                 <AnimatedFontAwesomeIcon
