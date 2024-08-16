@@ -110,6 +110,7 @@ const renderSocialIcons = ({ item }) => {
                         <Pressable
                             onPressIn={onPressFacebookIn}
                             onPressOut={onPressFacebookOut}
+                            onPress={() => openLink(faceBookLink)}
                         >
                             <AnimatedFontistoIcon name="facebook" size={30} color="#0866ff" />
                         </Pressable>
@@ -122,6 +123,7 @@ const renderSocialIcons = ({ item }) => {
                         <Pressable
                             onPressIn={onPressLinkedinIn}
                             onPressOut={onPressLinkedinOut}
+                            onPress={() => openLink(linkedinLink)}
                         >
                             <AnimatedFontistoIcon name="linkedin" size={30} color="#0866ff" />
                         </Pressable>
@@ -134,6 +136,7 @@ const renderSocialIcons = ({ item }) => {
                         <Pressable
                             onPressIn={onPressInstagramIn}
                             onPressOut={onPressInstagramOut}
+                            onPress={() => openLink(instagramLink)}
                         >
                             <AnimatedFontistoIcon name="instagram" size={30} color="#f700b2" />
                         </Pressable>
@@ -146,6 +149,7 @@ const renderSocialIcons = ({ item }) => {
                         <Pressable
                             onPressIn={onPressTwitterIn}
                             onPressOut={onPressTwitterOut}
+                            onPress={() => openLink(twitterLink)}
                         >
                             <TwitterIcon width={30} height={30} color='red' />
                         </Pressable>

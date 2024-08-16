@@ -64,6 +64,7 @@ const AddBusinessDetails = ({ route, navigation }) => {
   const dateOfOpeningJob = watch('dateOfOpeningJob') || new Date();
 
   const onSubmit = async data => {
+    console.log(data, ":::data")
     setLoading(true);
     const formData = new FormData();
     data?.address && formData.append('address', data.address);

@@ -121,7 +121,7 @@ const Bus_User_template2 = ({ route }) => {
             Linking.openURL(url);
         }
     };
-
+    console.log(item.facebook, ":::item.facebook")
     const renderSocialIcons = () => (
         <View className="flex flex-row justify-around mt-6">
             {item.facebook && <Animated.View style={[{ transform: [{ scale: faceBookScale }] }]}>
@@ -130,6 +130,7 @@ const Bus_User_template2 = ({ route }) => {
                         activeOpacity={1}
                         onPressIn={onPressFacebookIn}
                         onPressOut={onPressFacebookOut}
+                        onPress={() => openLink(faceBookLink)}
                     >
                         <AnimatedFontistoIcon name="facebook" size={30} color="#0866ff" />
                     </Pressable>
@@ -143,6 +144,7 @@ const Bus_User_template2 = ({ route }) => {
                             activeOpacity={1}
                             onPressIn={onPressLinkedinIn}
                             onPressOut={onPressLinkedinOut}
+                            onPress={() => openLink(linkedinLink)}
                         >
                             <AnimatedFontistoIcon name="linkedin" size={30} color="#0866ff" />
                         </Pressable>
@@ -157,6 +159,7 @@ const Bus_User_template2 = ({ route }) => {
                             activeOpacity={1}
                             onPressIn={onPressInstagramIn}
                             onPressOut={onPressInstagramOut}
+                            onPress={() => openLink(instagramLink)}
                         >
                             <AnimatedFontistoIcon name="instagram" size={30} color="#f700b2" />
                         </Pressable>
