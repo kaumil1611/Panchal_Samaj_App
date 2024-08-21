@@ -24,13 +24,14 @@ const NodeDetails = ({ navigation, route }) => {
     const [isPopupVisible, setIsPopupVisible] = useState(false);
     const [loading, setLoading] = useState(true);
     const AnimatedFontAwesomeIcon = Animated.createAnimatedComponent(FontAwesome);
-    const images = userData?.photo ? [{ uri: `${process.env.IMAGE_URL}${userData.photo}` }] : [];
+    const images = userData?.photo ? [{ uri: `${process.env.IMAGE_URL}${newImage}` }] : [];
 
     useEffect(() => {
         (async function () {
             setLoading(true);
             const contentUserDataById = await userDataByParentId(userId);
             setUserData(contentUserDataById);
+            setImage(contentUserDataById?.photo)
             setLoading(false);
         })();
     }, [userId]);
@@ -316,7 +317,7 @@ const NodeDetails = ({ navigation, route }) => {
                                 </SkeletonPlaceholder>
                             ) : (
                                 Object.entries(filteredUserData).map(([key, value], index) => {
-                                    if (value) { // Check if value exists
+                                    if (value) {
                                         return (
                                             <View key={index + "keyyyss"}>
                                                 <View className="w-full p-3 rounded-[15px]">
@@ -333,7 +334,7 @@ const NodeDetails = ({ navigation, route }) => {
                                             </View>
                                         );
                                     }
-                                    return null; // Return null if value doesn't exist
+                                    return null;
                                 })
 
                             )}
